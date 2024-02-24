@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>task5</title>
+</head>
+
+<body>
+  <script>
+    let incomingValueInCm = parseFloat(prompt('Введіть довжину у сантиметрах'))
+    let incomingValueInMetres = incomingValueInCm / 100
+    let incomingValueInKm = incomingValueInCm / 1000
+    document.write(`<div>Отримана довжина складає ${incomingValueInMetres} метрів</div>`)
+    document.write(`<div>Отримана довжина складає ${incomingValueInKm} кілометрів</div>`)
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>task4</title>
+</head>
+
+<body>
+  <script>
+    const fixedTax = 0.05
+    let pricePerOneItem = parseFloat(prompt("Вкажіть вартість за одну одиницю товару"))
+    let totalQtyOfItems = parseFloat(prompt("Вкажіть загальну кількість товарів"))
+    let totalPricePerAllItems = pricePerOneItem * totalQtyOfItems
+    let valueAddedTax = (totalPricePerAllItems * fixedTax).toFixed(2)
+    let totalPriceWithTax = valueAddedTax + totalPricePerAllItems
+    document.write(`<div>Вартість за одну одиницю складає: ${pricePerOneItem}</div>`)
+    document.write(`<div>Загальна кількість товарів складає: ${totalQtyOfItems}</div>`)
+    document.write(`<div>Загальна вартість усіх товарів складає: ${totalPricePerAllItems}</div>`)
+    document.write(`<div>Податок на додаткову вартість у розмірі 5% складає: ${valueAddedTax}</div>`)
+    document.write(`<div>Загальна вартість усіх товарів із податком складає: ${totalPriceWithTax}</div>`)
+  </script>
+</body>
+
+</html>

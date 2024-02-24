@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>task7</title>
+</head>
+
+<body>
+  <script>
+    const numberOfQuestions = 3;
+    let totalPrice = 0
+    let baseOfPrices = []
+    let baseOfItems = []
+    let baseOfQty = []
+    for (let i = 0; i < numberOfQuestions; i++) {
+      let nameOfItem = prompt(`Введіть назву товару ${i + 1}`).trim()
+      if (nameOfItem == '' || nameOfItem == null) {
+        i--
+      } else {
+        baseOfItems[i] = nameOfItem
+      }
+
+
+    }
+    for (let i = 0; i < numberOfQuestions; i++) {
+      let priceOfItem = parseFloat(prompt(`Введіть ціну товару ${i + 1}`))
+      if (priceOfItem <= 0) {
+        i--
+      } else {
+        baseOfPrices[i] = priceOfItem
+      }
+
+    }
+    for (let i = 0; i < numberOfQuestions; i++) {
+      let qtyOfItems = parseInt(prompt(`Введіть кількість товару ${i + 1}`))
+      if (qtyOfItems <= 0) {
+        i--
+      } else {
+        baseOfQty[i] = qtyOfItems
+      }
+
+    }
+    for (let i = 0; i < numberOfQuestions; i++) {
+      totalPrice += baseOfPrices[i] * baseOfQty[i]
+    }
+    for (let i = 0; i < numberOfQuestions; i++) {
+      document.write(`<div>Назва товару: ${baseOfItems[i]}. Загальна кількість товару: ${baseOfQty[i]}. Ціна за одну одиницю товару: ${baseOfPrices[i]} Ціна за ці товари: ${baseOfPrices[i] * baseOfQty[i]}</div>`)
+    }
+    document.write(`Загальна вартість покупки складає ${totalPrice}`)
+  </script>
+</body>
+
+</html>

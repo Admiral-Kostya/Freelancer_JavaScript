@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>task8</title>
+</head>
+
+<body>
+  <script>
+    let minDayOfWeek = 0, maxDayOfWeek = 6
+    let minMonth = 1, maxMonth = 12
+    let randomValueOfWeek = minDayOfWeek + Math.floor(Math.random() * (maxDayOfWeek - minDayOfWeek + 1))
+    let randomValueOfMonth = minMonth + Math.floor(Math.random() * (maxMonth - minMonth + 1))
+    let rezult = randomValueOfWeek + randomValueOfMonth
+    document.write(`<p>Отримуємо випадковий номер міцяця: ${randomValueOfMonth}</p>`)
+    document.write(`<p>Отримуємо випадковий номер тижня: ${randomValueOfWeek}</p>`)
+    document.write(`<p>Результат: ${rezult}</p>`)
+  </script>
+</body>
+
+</html>
