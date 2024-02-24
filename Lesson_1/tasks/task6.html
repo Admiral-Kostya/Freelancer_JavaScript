@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>task6</title>
+</head>
+
+<body>
+  <script>
+    let incomeValueInSeconds = parseInt(prompt("Введіть загальну кількість секунд"))
+    let secondsInMinutes = incomeValueInSeconds / 60;
+    let hours = Math.floor(secondsInMinutes / 60);
+    let minutes = (secondsInMinutes - hours * 60).toFixed(0);
+    if (
+      secondsInMinutes < 0 ||
+      typeof secondsInMinutes != "number"
+    ) {
+      document.write("Ошибка, проверьте данные")
+    }
+    if (hours === 1) {
+      document.write(`Это ${hours} час и ${minutes} минут`);
+    } else if (hours > 1 && hours <= 4) {
+      document.write(`Это ${hours} час и ${minutes} минут`.replace("час", "часа"));
+    } else {
+      document.write(`Это ${hours} час и ${minutes} минут`.replace("час", "часов"));
+    }
+  </script>
+</body>
+
+</html>

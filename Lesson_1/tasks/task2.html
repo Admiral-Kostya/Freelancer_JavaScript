@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>task2</title>
+</head>
+
+<body>
+  <script>
+    let firstValue = parseFloat(prompt('Введіть значення першого числа'))
+    let secondValue = parseFloat(prompt('Введіть значення другого числа'))
+
+  </script>
+  <table>
+    <tr>
+      <td>Числа</td>
+      <th>
+        <script>document.write(firstValue)</script>
+      </th>
+      <th>
+        <script>document.write(secondValue)</script>
+      </th>
+    </tr>
+    <tr>
+      <td>Сума</td>
+      <td colspan="2">
+        <script>
+          let numberSum = firstValue + secondValue
+          document.write(numberSum)
+        </script>
+      </td>
+    </tr>
+    <tr>
+      <td>Добуток</td>
+      <td colspan="2">
+        <script>
+          let numberMultiplication = firstValue * secondValue
+          document.write(numberMultiplication)
+        </script>
+      </td>
+    </tr>
+    <tr>
+      <td>Частка</td>
+      <td colspan="2">
+        <script>
+          let numberDivision = firstValue / secondValue
+          document.write(numberDivision)
+        </script>
+      </td>
+    </tr>
+  </table>
+</body>
+
+</html>
