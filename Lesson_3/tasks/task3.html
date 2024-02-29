@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>task3</title>
+</head>
+
+<body>
+  <script>
+    let minRandomNumber = 1
+    let maxRandomNumber = 5
+    const randomNumber = minRandomNumber + Math.floor(Math.random() * (maxRandomNumber - minRandomNumber + 1))
+    console.log(randomNumber)
+
+    let userNumberAttempt = parseInt(prompt("Спробуйте вгадати число від 1 до 5 за 2 спроби. Перша спроба:", "2"))
+
+
+    let result
+
+    if (userNumberAttempt === randomNumber) result = `Ви вгадали число ${randomNumber}`
+    else {
+      userNumberAttempt = parseInt(prompt("Спробуйте вгадати число від 1 до 5 за 2 спроби. Друга спроба:", "3"))
+      if (userNumberAttempt === randomNumber) result = `Ви вгадали число ${randomNumber}`
+      else result = `Ви не вгадали за 2 спроби число: ${randomNumber}`
+    }
+
+    document.write(result)
+  </script>
+</body>
+
+</html>

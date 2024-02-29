@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>task7</title>
+</head>
+
+<body>
+  <script>
+    const numberOfMonth = parseInt(prompt('Введіть номер місяця від 1 до 12'));
+    let result = ''
+    if (numberOfMonth > 0 && numberOfMonth <= 12) {
+      switch (numberOfMonth) {
+        case 1: result = 'Пора року - зима'
+        case 2: result = 'Пора року - зима'
+        case 12: result = 'Пора року - зима'
+          break;
+        case 3: result = 'Пора року - весна'
+        case 4: result = 'Пора року - весна'
+        case 5: result = 'Пора року - весна'
+          break;
+        case 6: result = 'Пора року - літо'
+        case 7: result = 'Пора року - літо'
+        case 8: result = 'Пора року - літо'
+          break;
+        case 9: result = 'Пора року - осінь'
+        case 10: result = 'Пора року - осінь'
+        case 11: result = 'Пора року - осінь'
+          break;
+        default:
+          break;
+      }
+    } else {
+      result = 'Щось пішло не так'
+    }
+    document.write(`<p>${result}</p>`)
+  </script>
+</body>
+
+</html>

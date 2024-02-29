@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>task4</title>
+</head>
+
+<body>
+  <script>
+    let ageOfPerson = parseFloat(prompt('Bік людини'))
+    if (ageOfPerson > 0 && ageOfPerson < 6) {
+      document.write('дитинa у садочку')
+    } else if (ageOfPerson >= 6 && ageOfPerson < 18) {
+      document.write('школяр')
+    } else if (ageOfPerson >= 18 && ageOfPerson <= 23) {
+      document.write('студент')
+    } else if (ageOfPerson > 23 && ageOfPerson < 70) {
+      document.write('працівник')
+    } else {
+      document.write('пенсіонер')
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>task2</title>
+</head>
+
+<body>
+  <script>
+    const priceOfLotteryTicket = 4
+    let priceOfItem = parseFloat(prompt('ціна товару'))
+    let amountOfMoney = parseFloat(prompt('кількість грошей'))
+    if (amountOfMoney < priceOfItem) {
+      document.write(`<p>Нажаль ти не можеш нічого купити</p>`)
+    } else if ((amountOfMoney - priceOfItem) >= priceOfLotteryTicket) {
+      document.write(`<p>Пропонуємо купити лотерею за 4 грн</p>`)
+    }
+  </script>
+
+</body>
+
+</html>
