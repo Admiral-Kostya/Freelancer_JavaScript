@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>task9</title>
+</head>
+
+<body>
+
+  <script>
+    const seedNumber = parseInt(prompt("Введіть початкове число"))
+    const finalNumber = parseInt(prompt("Введіть кінцеве число"))
+    let sumOfNotPairNumbers = 0
+    let counter = 0
+    let wrongAnswer = ''
+    for (let i = seedNumber; i <= finalNumber; i++) {
+      if (i % 2 != 0) {
+        counter++
+        sumOfNotPairNumbers += i
+        if (counter === 5) {
+          break
+        }
+      }
+    }
+    document.write(`<p>Сумма 5 непарних чисел = ${sumOfNotPairNumbers}</p>`)
+
+  </script>
+</body>
+
+</html>

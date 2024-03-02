@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>task2</title>
+</head>
+
+<body>
+
+  <script>
+    let num
+    let string = ''
+    for (num = 3; num <= 8; num++) {
+      switch (num) {
+        case 3: string = 'March'
+          break;
+        case 4: string = 'April'
+          break;
+        case 5: string = 'May'
+          break;
+        case 6: string = 'June'
+          break;
+        case 7: string = 'July'
+          break;
+        case 8: string = 'August'
+          break;
+        default:
+          break;
+      }
+      document.write(`<p>Number of month: ${num}, month name: ${string}</p>`)
+    }
+
+  </script>
+
+</body>
+
+</html>

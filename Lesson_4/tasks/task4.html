@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>task4</title>
+</head>
+
+<body>
+
+  <script>
+    const randomNumberByUser = parseInt(prompt('Введіть будь-яке число'))
+    for (let i = 0; i < randomNumberByUser; i++) {
+      const showRandomNumbers = 1 + Math.floor(Math.random() * 100)
+      document.write(`
+       <ul>
+       <li>${showRandomNumbers}</li>
+     </ul>
+       `)
+    }
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>task1</title>
+</head>
+
+<body>
+  <script>
+    let doubleNumberCounter = 0
+    let notPairNumberCounter = 0
+    for (let i = 0; i < 100; i++) {
+      const randomNumber = 1 + Math.floor(Math.random() * 1000)
+      if (randomNumber % 2 === 0) {
+        doubleNumberCounter++
+      } else if (randomNumber % 2 != 0) {
+        notPairNumberCounter++
+      }
+    }
+    document.write(`<p>Парних чисел: ${doubleNumberCounter}, а непарних: ${notPairNumberCounter} </p>`)
+
+  </script>
+</body>
+
+</html>

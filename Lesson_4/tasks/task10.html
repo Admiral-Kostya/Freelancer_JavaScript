@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>task10</title>
+</head>
+
+<body>
+
+  <script>
+    /*   let commonProfit = 0
+  let profitPerWeek = 0
+  const daysPerOneWeek = 7
+  const qtyOfWeeks = parseInt(prompt('Введіть загальну кількість тижднів'))
+  const totalDaysPerAllWeeks = qtyOfWeeks * daysPerOneWeek
+  for (let i = 1; i <= totalDaysPerAllWeeks; i++) {
+    const profitPerOneDay = parseFloat(prompt(`Прибуток за день ${i}`))
+
+    if (i <= daysPerOneWeek) {
+      profitPerWeek += profitPerOneDay
+    }
+    commonProfit += profitPerOneDay
+  }
+  console.log(profitPerWeek)
+  console.log(commonProfit) */
+    let result = 0
+    let counter = 0
+    const qtyOfTemp = parseInt(prompt("Введіть кількість значень"))
+    for (let i = 0; i < qtyOfTemp; i++) {
+      const valueOfTemp = parseFloat(prompt("Введіть значення температури"))
+      result += valueOfTemp
+      counter++
+    }
+    document.write(`Середнє значення температури дорівнює: ${result / counter}`)
+  </script>
+</body>
+
+</html>

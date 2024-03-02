@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>task8</title>
+</head>
+
+<body>
+
+  <script>
+    const seedNumber = parseInt(prompt("Введіть початкове число"))
+    const finalNumber = parseInt(prompt("Введіть кінцеве число"))
+    let sumOfNotPairNumber = 0
+    for (let i = seedNumber; i <= finalNumber; i++) {
+      if (i % 2 != 0) {
+        sumOfNotPairNumber += i
+
+      }
+    }
+    document.write(`<p>Сумма усіх непарних чисел = ${sumOfNotPairNumber}</p>`)
+  </script>
+</body>
+
+</html>
