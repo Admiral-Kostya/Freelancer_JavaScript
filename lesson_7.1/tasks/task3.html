@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/style.css">
+  <title>task3</title>
+</head>
+
+<body>
+  <script>
+    function getDayOff(numberOfADay) {
+      return numberOfADay > 0 && numberOfADay < 6;
+    }
+    let numberOfADay = parseInt(prompt("Введіть номер дня від 1 до 7"));
+    if (getDayOff(numberOfADay)) document.write(`<p>Це робочий день</p>`);
+    else document.write(`<p>Це вихідний</p>`);
+  </script>
+</body>
+
+</html>

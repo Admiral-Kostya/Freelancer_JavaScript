@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>task7</title>
+</head>
+
+<body>
+
+  <script>
+    function getRandomTemperature(qty) {
+      let arithmeticMean = 0;
+      let counter = 0;
+      for (let i = 0; i < qty; i++) {
+        let temp = parseFloat(prompt("Введіть значення температури"));
+        if (temp > 0) {
+          arithmeticMean += temp;
+          counter++;
+        }
+      }
+      document.write(
+        `<p>Середнє значення для додатних показів температури = ${arithmeticMean / counter
+        }  градусів </p>`
+      );
+    }
+    getRandomTemperature(5);
+  </script>
+  <br>
+</body>
+
+</html>
