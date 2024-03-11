@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>task10</title>
+</head>
+
+<body>
+
+  <script>
+    function getSomeResults(qty) {
+      let pairCounter = 0;
+      let positiveCounter = 0;
+      let bigNumCounter = 0;
+      for (let i = 0; i < qty; i++) {
+        let userNum = parseFloat(prompt(`Введіть  число ${i + 1}`));
+        if (userNum % 2 === 0) {
+          pairCounter++;
+        }
+        if (userNum > 0) {
+          positiveCounter++;
+        }
+        if (userNum > 100) {
+          bigNumCounter++;
+        }
+      }
+      document.write(`<p>кількість парних = ${pairCounter}</p>`);
+      document.write(`<p>кількість додатних = ${positiveCounter}</p>`);
+      document.write(`<p>кількість більших за 100 = ${bigNumCounter}</p>`);
+    }
+
+    getSomeResults(3);
+  </script>
+</body>
+
+</html>

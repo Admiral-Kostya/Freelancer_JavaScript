@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>task4</title>
+</head>
+
+<body>
+
+  <script>
+    const getFirstNum = parseFloat(prompt("Введіть перше число"));
+    const getSecondNum = parseFloat(prompt("Введіть друге число"));
+    const getThirdNum = parseFloat(prompt("Введіть третє число"));
+    const getFourthNum = parseFloat(prompt("Введіть четверте число"));
+
+    function getSumm(num1, num2, num3, num4) {
+      return num1 + num2 + num3 + num4;
+    }
+    function getMultiplication(num1, num2, num3, num4) {
+      return num1 * num2 * num3 * num4;
+    }
+    function getMultiplication(num1, num2, num3, num4) {
+      return num1 * num2 * num3 * num4;
+    }
+    function getArithmeticMean(num1, num2, num3, num4) {
+      return (num1 + num2 + num3 + num4) / 4;
+    }
+    function getMinValue(num1, num2, num3, num4) {
+      return Math.min(num1, num2, num3, num4);
+    }
+    let getResultOfSumm = getSumm(
+      getFirstNum,
+      getSecondNum,
+      getThirdNum,
+      getFourthNum
+    );
+    let getResultOfMultiplication = getMultiplication(
+      getFirstNum,
+      getSecondNum,
+      getThirdNum,
+      getFourthNum
+    );
+    let getResultOfArithmeticMean = getArithmeticMean(
+      getFirstNum,
+      getSecondNum,
+      getThirdNum,
+      getFourthNum
+    );
+    let getResultOfMinValue = getMinValue(
+      getFirstNum,
+      getSecondNum,
+      getThirdNum,
+      getFourthNum
+    );
+    document.write(`<p> Сумма чотирьох чисел = ${getResultOfSumm}</p>`);
+    document.write(`<p> Добуток чотирьох чисел = ${getResultOfMultiplication}</p>`);
+    document.write(
+      `<p> Середнє арифметичне чотирьох чисел = ${getResultOfArithmeticMean}</p>`
+    );
+    document.write(
+      `<p> Мінімальне значення серед чотирьох чисел = ${getResultOfMinValue}</p>`
+    );
+    //------------------------------- Trainig
+    // const arr = [];
+    // let startValue = 0;
+    // function getValueFromUser(qty) {
+    //   let getNum;
+    //   for (let i = 0; i < qty; i++) {
+    //     getNum = parseFloat(prompt("Введіть  число"));
+    //     arr[i] = getNum;
+    //   }
+    //   return arr;
+    // }
+    // let resultArray = getValueFromUser(4);
+    // function getSumm() {
+    //   resultArray.forEach((item) => {
+    //     startValue += item;
+    //   });
+    //   return startValue;
+    // }
+    // let resultOfSumm = getSumm();
+    // console.log(resultOfSumm);
+  </script>
+</body>
+
+</html>

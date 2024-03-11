@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>task1</title>
+</head>
+
+<body>
+  <script>
+    function getTimeOfYear(value) {
+      let result = "";
+      switch (value) {
+        case 1:
+        case 2:
+        case 12:
+          result = "Зима";
+          break;
+        case 3:
+        case 4:
+        case 5:
+          result = "Весна";
+          break;
+        case 6:
+        case 7:
+        case 8:
+          result = "Літо";
+          break;
+        case 9:
+        case 10:
+        case 11:
+          result = "Осінь";
+          break;
+        default:
+          result = "Упс, такого місяця не існує";
+          break;
+      }
+      return result;
+    }
+    const askTimeOfYear = parseInt(prompt("Введіть номер місяця"));
+    const commonResult = getTimeOfYear(askTimeOfYear);
+    document.write(
+      `Номер місяця ${askTimeOfYear} - відповідає порі року ${commonResult}`
+    );
+
+  </script>
+</body>
+
+</html>

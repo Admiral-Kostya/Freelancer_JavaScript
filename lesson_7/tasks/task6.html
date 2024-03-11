@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>task6</title>
+</head>
+
+<body>
+
+  <script>
+    function getRandomImage(numberOfImg) {
+      document.write(
+        `<div><img src="../img/img0${numberOfImg}.jpg" alt="#"></div>`
+      );
+    }
+    let getRandomValue = 1 + Math.floor(Math.random() * 4);
+    getRandomImage(getRandomValue);
+  </script>
+</body>
+
+</html>

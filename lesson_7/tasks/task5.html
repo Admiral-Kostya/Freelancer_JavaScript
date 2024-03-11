@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>task5</title>
+</head>
+
+<body>
+  <script>
+    const valueForInches = 0.394;
+    const valueForPounds = 2.2;
+    const valueForMiles = 0.6214;
+    const getValueInCm = parseFloat(prompt("Введіть значення у сантиметрах"));
+    const getValueInKg = parseFloat(prompt("Введіть значення у кілограмах"));
+    const getValueInKm = parseFloat(prompt("Введіть значення у кілометрах"));
+
+    function getInches(valueInCm) {
+      return valueInCm * valueForInches;
+    }
+    function getPounds(valueInKg) {
+      return Math.round(valueInKg * valueForPounds);
+    }
+    function getMiles(valueInKm) {
+      return Math.round(valueInKm * valueForMiles);
+    }
+    let getResultOfInches = getInches(getValueInCm);
+    let getResultOfPounds = getPounds(getValueInKg);
+    let getResultOfMiles = getMiles(getValueInKm);
+    document.write(
+      `<p> ${getValueInCm}см - це ${getResultOfInches.toFixed(2)} дюйми </p>`
+    );
+    document.write(`<p> ${getValueInKg}кг - це ${getResultOfPounds} фунтів </p>`);
+    document.write(
+      `<p> ${getValueInKm}км - це ${getResultOfMiles} морських миль </p>`
+    );
+  </script>
+</body>
+
+</html>
