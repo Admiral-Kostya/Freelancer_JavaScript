@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>task1</title>
+</head>
+
+<body>
+  <script>
+    const arrayWithSubjectMarks = [2, 3, 4, 4, 5];
+
+    function getAverageScore(incomeArray) {
+      let averageScore = 0;
+      for (let i = 0; i < incomeArray.length; i++) {
+        averageScore += incomeArray[i];
+      }
+      return averageScore / arrayWithSubjectMarks.length;
+    }
+    function getStudentLevel(incomeArray) {
+      let markThreeCounter = 0;
+      let markTwoCounter = 0;
+      let sum = 0;
+      let resultLevel = "";
+      for (let index = 0; index < incomeArray.length; index++) {
+        sum += incomeArray[index];
+        if (incomeArray[index] === 3) {
+          markThreeCounter++;
+        } else if (incomeArray[index] === 2) {
+          markTwoCounter++;
+        }
+      }
+      if (sum % 5 === 0 && !markTwoCounter && !markThreeCounter) {
+        resultLevel = "Відмінник";
+      } else if (!markTwoCounter && !markThreeCounter) {
+        resultLevel = "хорошист";
+      } else if (markThreeCounter && !markTwoCounter) {
+        resultLevel = "трійочник";
+      } else if (markTwoCounter) {
+        resultLevel = "двійочник";
+      }
+      return resultLevel;
+    }
+    let getResultOfStudentLevel = getStudentLevel(arrayWithSubjectMarks);
+    let getResultOfAverageScore = getAverageScore(arrayWithSubjectMarks);
+    document.write(
+      `<div>Середня оцінка учня становить ${getResultOfAverageScore.toFixed(
+        2
+      )} балів</div>`
+    );
+    document.write(`<div> Цей учень - ${getResultOfStudentLevel} </div>`);
+
+  </script>
+</body>
+
+</html>

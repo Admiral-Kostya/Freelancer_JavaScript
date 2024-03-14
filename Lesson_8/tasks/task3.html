@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/style.css">
+  <title>task3</title>
+</head>
+
+<body>
+  <script>
+    const listOfCarsNumbers = [
+      "ВН123246ТТ",
+      "АН123245РП",
+      "АН323245НД",
+      "АН123245РД",
+      "АН323245НД",
+      "КН323245НЦ",
+      "КН323245НЦ",
+      "КН323245НЦ",
+      "АН324745НЛ",
+      "НН324745НН",
+      "НН324745НН",
+      "НН324745НН",
+      "НН324745НН",
+      "НН324745НН",
+      "АН324745НА",
+    ];
+
+    function getFirstLetter(letter, arr) {
+      let arrOfValues = [];
+      let firstLetter = letter;
+      let counterFirstLetter = 0;
+      let counterOfLetterQty = 0;
+      let counterFirstAndLastLetters = 0;
+      let resultOfFirstLetter = 1;
+      let resultOfLetterQty = 1;
+      let resultOfFirstAndLastLetters = 1;
+      let word = "";
+      for (let i = 0; i < arr.length; i++) {
+        word = arr[i];
+        let lastLetterInWord = word.length - 1;
+        for (let j = 0; j < word.length; j++) {
+          if (word[0] === firstLetter) {
+            counterFirstLetter++;
+            resultOfFirstLetter = counterFirstLetter / word.length;
+          }
+          if (word.length > 5) {
+            counterOfLetterQty++;
+            resultOfLetterQty = counterOfLetterQty / word.length;
+          }
+          if (word[0] === word[lastLetterInWord]) {
+            counterFirstAndLastLetters++;
+            resultOfFirstAndLastLetters = counterFirstAndLastLetters / word.length;
+          }
+        }
+      }
+      arrOfValues[0] = resultOfFirstLetter;
+      arrOfValues[1] = resultOfLetterQty;
+      arrOfValues[2] = resultOfFirstAndLastLetters;
+      return arrOfValues;
+    }
+
+    let getResultOfFirstLetter = getFirstLetter("А", listOfCarsNumbers);
+    document.write(
+      `<div>кількість номерів, які починаються на букву «А» - ${getResultOfFirstLetter[0]}</div>`
+    );
+    document.write(
+      `<div>кількість номерів, складаються з більше ніш 5 символів - ${getResultOfFirstLetter[1]}</div>`
+    );
+    document.write(
+      `<div>кількість номерів, перша і остання літери співпадають - ${getResultOfFirstLetter[2]}</div>`
+    );
+  </script>
+</body>
+
+</html>

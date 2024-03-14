@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>task4</title>
+</head>
+
+<body>
+
+  <script>
+    const paymentForAFlat = [
+      1200, 1900, 1550, 1300, 1600, 1450, 1200, 1200, 1720, 1450, 1450, 1900,
+    ];
+
+    function getSumOfPayments(arr) {
+      let arrayOfSums = [];
+      let sumForFirstHalf = 0;
+      let sumForSecondHalf = 0;
+      let sumForSummer = 0;
+      let sumForEvenMonths = 0;
+      let sumForFirstMonths = 0;
+      for (let i = 0; i < arr.length; i++) {
+        if (i < 6) {
+          sumForFirstHalf += arr[i];
+        } else if (i < 12) {
+          sumForSecondHalf += arr[i];
+        }
+        if (i > 4 && i < 8) {
+          sumForSummer += arr[i];
+        }
+        if ((i + 1) % 2 === 0) {
+          sumForEvenMonths += arr[i];
+        }
+        if ((i + 4) % 3 === 0) {
+          sumForFirstMonths += arr[i];
+        }
+      }
+      arrayOfSums.push(sumForFirstHalf);
+      arrayOfSums.push(sumForSecondHalf);
+      arrayOfSums.push(sumForSummer);
+      arrayOfSums.push(sumForEvenMonths);
+      arrayOfSums.push(sumForFirstMonths);
+      return arrayOfSums;
+    }
+    let getResultOFAllSumPayments = getSumOfPayments(paymentForAFlat);
+
+    document.write(
+      `<div>сумарнa кількість грошей у першій половині року - ${getResultOFAllSumPayments[0]}</div>`
+    );
+    document.write(
+      `<div>сумарнa кількість грошей у другій половині року - ${getResultOFAllSumPayments[1]}</div>`
+    );
+    document.write(
+      `<div>сумарнa кількість грошей за літо - ${getResultOFAllSumPayments[2]}</div>`
+    );
+    document.write(
+      `<div>сумарнa кількість грошей за парні місяці (з парними номерами) - ${getResultOFAllSumPayments[3]}</div>`
+    );
+    document.write(
+      `<div>сумарнa кількість грошей за місяці, які є початковими у сезоні (весна, літо, осінь, зима) - ${getResultOFAllSumPayments[4]}</div>`
+    );
+  </script>
+</body>
+
+</html>
