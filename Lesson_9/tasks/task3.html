@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/style.css">
+  <title>task3</title>
+</head>
+
+<body>
+  <script>
+    const valueFromUser = parseInt(prompt("Введіть кількість елементів"));
+    let arrOfNums = new Array(valueFromUser);
+    arrOfNums.fill(1, 0, 5);
+    arrOfNums.fill(7, 5, arrOfNums.length);
+    document.write(arrOfNums);
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/style.css">
+  <title>task9</title>
+</head>
+
+<body>
+
+  <script>
+    const names = ["Alex", "Ann", "John", "Filip", "Ron"];
+    function getArrayOfFirstLetters(array) {
+      const newArr = array.map((value) => value[0]);
+      return newArr;
+    }
+    let resultArray = getArrayOfFirstLetters(names);
+    document.write(`<div>[${resultArray}]</div>`);
+
+  </script>
+</body>
+
+</html>

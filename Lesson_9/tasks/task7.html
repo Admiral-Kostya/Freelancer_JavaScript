@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>task7</title>
+</head>
+
+<body>
+
+  <script>
+    const arrOfPrices = [50, 2000, 556, 77, 8000, 55, 2500];
+    const valueOfDiscount = 0.3;
+    arrOfPrices.forEach((element, i, baseArr) => {
+      if (element > 1000) {
+        baseArr[i] = element - element * valueOfDiscount;
+      }
+    });
+    document.write(arrOfPrices)
+  </script>
+  <br>
+</body>
+
+</html>

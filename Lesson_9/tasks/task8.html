@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>task8</title>
+</head>
+
+<body>
+
+  <script>
+    const listOfCarsNumbers = [
+      "ВН123246ТТ",
+      "АН123245РП",
+      "АН323245НД",
+      "АН123245РД",
+      "АН323245НД",
+      "КН323245НЦ",
+      "КН323245НЦ",
+      "КН323245НЦ",
+      "АН324745НЛ",
+      "НН324745НН",
+      "НН324745НН",
+      "НН324745НН",
+      "НН324745НН",
+      "НН324745НН",
+      "АН324745НА",
+    ];
+    // Method 1
+    let word = "";
+    let newArr = [];
+    for (let i = 0; i < listOfCarsNumbers.length; i++) {
+      word = listOfCarsNumbers[i];
+      for (let j = 0; j < word.length; j++) {
+        if (word[0] === "А") {
+          newArr.push(word);
+          break;
+        }
+      }
+    }
+    document.write(`<div> Рішення першим методом - ${newArr} </div>`);
+    // Method 2
+
+    function getFilteredArray(array) {
+      const newArray = array.filter((value) => value[0] === "А");
+      return newArray;
+    }
+    let result = getFilteredArray(listOfCarsNumbers);
+    document.write(`<div> Рішення другим методом - ${result} </div>`);
+  </script>
+</body>
+
+</html>
