@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>task4</title>
+</head>
+
+<body>
+  <p>
+    4. Сформувати новий масив, що міститиме значення цін у відсотках стосовно максимального
+  </p>
+  <script>
+    function getRandomArray(minValue, maxValue) {
+      let randomArr = []
+      for (let i = 0; i < 10; i++) {
+        let value = minValue + Math.floor(Math.random() * maxValue)
+        randomArr.push(value)
+      }
+      return randomArr
+    }
+    let historyOfPrices = getRandomArray(1, 10000)
+
+    const maxValue = Math.max(...historyOfPrices)
+    const mappedArray = historyOfPrices.map(value => Math.round(value / maxValue * 100))
+    document.write(`<p>Похідний масив - [${historyOfPrices}]</p>`)
+    document.write(`новий масив, що містить значення цін у відсотках стосовно максимального
+ - [${mappedArray}] `)
+  </script>
+</body>
+
+</html>

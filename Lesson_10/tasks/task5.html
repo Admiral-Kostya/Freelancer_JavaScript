@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>task5</title>
+</head>
+
+<body>
+  <p>
+    5. Підрахувати кількість змін цін
+  </p>
+  <script>
+    function getRandomArray(minValue, maxValue) {
+      let randomArr = []
+      for (let i = 0; i < 10; i++) {
+        let value = minValue + Math.floor(Math.random() * maxValue)
+        randomArr.push(value)
+      }
+      return randomArr
+    }
+    let historyOfPrices = getRandomArray(1, 10000)
+    const qtyOfChanges = historyOfPrices.reduce((accumulator, element, index, baseArr) => {
+      if (index === 0) return accumulator;
+      if (baseArr[index] != baseArr[index - 1]) {
+        accumulator += 1
+      }
+      return accumulator
+    }, 0)
+    document.write(`<p>Похідний масив - [${historyOfPrices}]</p>`)
+    document.write(`кількість змін цін - ${qtyOfChanges} `)
+  </script>
+</body>
+
+</html>

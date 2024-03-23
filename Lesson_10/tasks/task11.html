@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>task10</title>
+</head>
+
+<body>
+  <p>
+    11. Знайти індекс першої ціни, що більше за 1000
+
+  </p>
+  <script>
+    function getRandomArray(minValue, maxValue) {
+      let randomArr = []
+      for (let i = 0; i < 10; i++) {
+        let value = minValue + Math.floor(Math.random() * maxValue)
+        randomArr.push(value)
+      }
+      return randomArr
+    }
+    let historyOfPrices = getRandomArray(1, 10000)
+    const firstIndexBiggerThen1000 = historyOfPrices.findIndex(value => value > 1000)
+    document.write(`<p>Похідний масив - [${historyOfPrices}]</p>`)
+    document.write(`першa ціну, що більше за 1000 - ${firstIndexBiggerThen1000} `)
+  </script>
+</body>
+
+</html>

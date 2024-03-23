@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>task2</title>
+</head>
+
+<body>
+  <p>
+    2. Сформувати новий масив, у якому є номери тільки тих, що більші за 1000 грн.
+  </p>
+  <script>
+    function getRandomArray(minValue, maxValue) {
+      let randomArr = []
+      for (let i = 0; i < 10; i++) {
+        let value = minValue + Math.floor(Math.random() * maxValue)
+        randomArr.push(value)
+      }
+      return randomArr
+    }
+    let historyOfPrices = getRandomArray(1, 10000)
+
+    const arrOfIndex = historyOfPrices.reduce((accumulator, value, index) => {
+      if (value > 1000) accumulator.push(index)
+      return accumulator
+    }, [])
+    // let arrOfIndex = []
+    // for (let i = 0; i < historyOfPrices.length; i++) {
+    //   if (historyOfPrices[i] > 1000) {
+    //     arrOfIndex.push(i + 1)
+    //   }
+    // }
+    document.write(`<p>Похідний масив - [${historyOfPrices}]</p>`)
+    document.write(`масив, у якому є номери тільки тих, що більші за 1000 грн - [${arrOfIndex}] `)
+  </script>
+
+</body>
+
+</html>
