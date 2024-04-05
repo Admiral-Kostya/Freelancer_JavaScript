@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>task1</title>
+</head>
+
+<body>
+  <p>
+    1. Знайти суми елементів у вказаній області
+  </p>
+  <p>
+    1.1 номери рядків від 0 до половини, стовпці від 0 до половини
+  </p>
+  <script>
+    const array = [
+      [1, 2, 3, 4, 5],
+      [45, 23, 6, 9, 21, 1],
+      [12, 14, 15, 14],
+      [7, 5, 4, 7, 3, 21],
+    ];
+    let sum = 0;
+    for (let rowIndex = 0; rowIndex < array.length / 2; rowIndex++) {
+      for (
+        let columnIndex = 0;
+        columnIndex < array[rowIndex].length / 2;
+        columnIndex++
+      ) {
+        sum += array[rowIndex][columnIndex];
+      }
+    }
+    document.write(
+      `Сумма номерів рядків від 0 до половини, стовпці від 0 до половини = ${sum}`
+    );
+  </script>
+</body>
+
+</html>

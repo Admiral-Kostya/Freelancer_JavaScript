@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>task2.9</title>
+</head>
+
+<body>
+  <p>
+    3.1 Морський бій. Випадковим чином на двовимірному полі розміром 6*6 розташовується 5 кораблів. Користувач
+    стріляє
+    вказуючи координати. Гра продовжується поки не потоплено усі кораблі або у користувача не закінчаться снаряди.
+  </p>
+  <script>
+    function generateGameField(rowNumber = 6, colNumber = 6, shipNumber = 5) {
+      let gameField = []
+      for (let r = 0; r < rowNumber; r++) {
+        let row = new Array(colNumber).fill(0) // 
+        gameField.push(row)
+      }
+
+      for (let s = 0; s < shipNumber;) {
+        let r = Math.floor(Math.random() * rowNumber)
+        let c = Math.floor(Math.random() * colNumber)
+        if (gameField[r][c] !== 1) {
+          gameField[r][c] = 1
+          s++
+        }
+      }
+      return gameField
+    }
+    function play(shipNumber, missleNumber, gameField) {
+      while (shipNumber > 0 && missleNumber > 0) {
+        let r = parseInt(prompt('Введіть рядок ')) - 1
+        let c = parseInt(prompt('Введіть стовпець ')) - 1
+        missleNumber--
+
+        if (gameField[r][c] === 1) {
+          alert('Попав!')
+          shipNumber--
+          gameField[r][c] = 0
+        } else alert('мимо')
+      }
+      if (shipNumber === 0) return 'Перемога'
+      else return 'Програш'
+    }
+
+    function game(
+      shipNumber = 5,
+      missleNumber = 7,
+      rowNumber = 6,
+      colNumber = 6
+    ) {
+      let gameField = generateGameField(rowNumber, colNumber, shipNumber)
+      console.log(gameField)
+      let res = play(shipNumber, missleNumber, gameField)
+      alert(res)
+    }
+
+    game()
+  </script>
+</body>
+
+</html>

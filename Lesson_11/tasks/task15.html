@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>task2.8</title>
+</head>
+
+<body>
+  <p>
+    2.8 відсортувати тижні (рядки) за спаданням максимального елементи у цьому тижні (рядку), тобто при порівнянні
+    рядків потрібно порівнювати максимальні елементи у кожному з цих рядків
+  </p>
+  <script>
+    const storesProfit = [
+      [1000, 5000, 4000, 2000, 5000, 4000, 1000],
+      [1500, 1600, 2000, 400, 2000, 1000, 2000],
+      [5000, 4000, 10000, 200, 1000, 2000, 1500],
+      [2500, 3500, 1500, 200, 3000, 4000, 3500],
+    ];
+    let maxArr = storesProfit.map(row => Math.max(...row))
+    for (let rowIndex = 0; rowIndex < storesProfit.length - 1; rowIndex++) {
+      let maxIndex = rowIndex
+      for (let i = rowIndex + 1; i < storesProfit.length; i++) {
+        if (maxArr[maxIndex] < maxArr[i]) maxIndex = i
+      }
+      if (maxIndex !== rowIndex) {
+        let temp = maxArr[rowIndex]
+        maxArr[rowIndex] = maxArr[maxIndex]
+        maxArr[maxIndex] = temp
+        let tempRow = storesProfit[rowIndex]
+        storesProfit[rowIndex] = storesProfit[maxIndex]
+        storesProfit[maxIndex] = tempRow
+      }
+    }
+    document.write(`<p>
+      Тижні (рядки) за спаданням максимального елемента у цьому тижні - [${maxArr}]
+    </p>`)
+    console.log(maxArr)
+  </script>
+</body>
+
+</html>

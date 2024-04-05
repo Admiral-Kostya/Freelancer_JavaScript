@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>task2</title>
+</head>
+
+<body>
+  <p>
+    1.2 номери рядків від 0 до половини, стовпці від половини до кінця
+  </p>
+  <script>
+    const array = [
+      [1, 2, 3, 4, 5, 4],
+      [45, 23, 6, 9, 21, 1],
+      [12, 14, 15, 14],
+      [7, 5, 4, 7, 3, 21],
+    ];
+    let sum = 0;
+    for (let rowIndex = 0; rowIndex < array.length / 2; rowIndex++) {
+      for (
+        let columnIndex = Math.round(array[rowIndex].length / 2);
+        columnIndex < array[rowIndex].length;
+        columnIndex++
+      ) {
+        sum += array[rowIndex][columnIndex];
+      }
+    }
+    document.write(
+      `Сумма номерів рядків від 0 до половини, стовпці від половини до кінця = ${sum}`
+    );
+
+  </script>
+
+</body>
+
+</html>

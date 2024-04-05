@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>task2.5</title>
+</head>
+
+<body>
+  <p>
+    2.5 максимальний прибуток за середу
+
+  </p>
+  <script>
+    const storesProfit = [
+      [1000, 5000, 4000, 2000, 5000, 4000, 1000],
+      [1500, 1600, 2000, 400, 2000, 1000, 2000],
+      [5000, 4000, 10000, 200, 1000, 2000, 1500],
+      [2500, 3500, 1500, 200, 3000, 4000, 3500],
+    ];
+
+    let maxProfitPerWednesday = storesProfit[0][2];
+    //let maxProfitPerThursday = storesProfit[0][3];
+    function getMaxProfitPerWednesday(array, choosenDay, wednesday) {
+      for (let rowIndex = 0; rowIndex < array.length; rowIndex++) {
+        for (let colIndex = 0; colIndex < array[rowIndex].length; colIndex++) {
+          if (colIndex === wednesday) {
+            if (array[rowIndex][colIndex] > choosenDay) {
+              return (choosenDay = array[rowIndex][colIndex]);
+            }
+          }
+        }
+      }
+      return choosenDay;
+    }
+
+    let resultOfTask = getMaxProfitPerWednesday(
+      storesProfit,
+      maxProfitPerWednesday,
+      2
+    );
+    document.write(`Максимальний прибуток за середу: ${resultOfTask}$`);
+  </script>
+</body>
+
+</html>

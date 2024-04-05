@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/style.css">
+  <title>task2.2</title>
+</head>
+
+<body>
+  <p>
+    2.2 загальний прибуток усіх магазинів по дням (загальний прибуток усіх магазинів за понеділок, за вівторок, і т.д.);
+  </p>
+  <script>
+    const storesProfit = [
+      [1000, 5000, 4000, 2000, 5000, 4000, 1000],
+      [1500, 1600, 2000, 4000, 2000, 1000, 2000],
+      [5000, 4000, 2000, 2000, 1000, 2000, 1500],
+      [2500, 3500, 1000, 2000, 3000, 4000, 3500],
+    ];
+
+    function getSumOfAllSameDays(array, daysInWeek) {
+      let resultArr = [];
+      for (let rowIndex = 0; rowIndex < daysInWeek; rowIndex++) {
+        let profitPerDay = 0;
+        for (let colIndex = 0; colIndex < array.length; colIndex++) {
+          profitPerDay += storesProfit[colIndex][rowIndex];
+        }
+        resultArr.push(profitPerDay);
+      }
+      return resultArr;
+    }
+
+    let resultOfTask = getSumOfAllSameDays(storesProfit, 7);
+    resultOfTask.forEach((element, index) => {
+      document.write(
+        `Загальний прибуток усіх магазинів за день № ${index + 1}: ${element}$;<br>`
+      );
+    });
+  </script>
+</body>
+
+</html>

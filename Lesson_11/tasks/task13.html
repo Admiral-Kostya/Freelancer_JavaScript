@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>task2.6</title>
+</head>
+
+<body>
+  <p>
+    2.6 сформувати загальний список (одновимірний масив) зі значенням, які більші за 200
+  </p>
+  <script>
+    const storesProfit = [
+      [1000, 5000, 4000, 2000, 5000, 4000, 1000],
+      [1500, 1600, 2000, 400, 2000, 1000, 2000],
+      [5000, 4000, 10000, 200, 1000, 2000, 1500],
+      [2500, 3500, 1500, 200, 3000, 4000, 3500],
+    ];
+
+    function getArrayOfNumbersMoreThan2000(array, compareValue) {
+      let resultArr = [];
+      for (let rowIndex = 0; rowIndex < array.length; rowIndex++) {
+        for (let colIndex = 0; colIndex < array[rowIndex].length; colIndex++) {
+          if (array[rowIndex][colIndex] > compareValue) {
+            resultArr.push(array[rowIndex][colIndex]);
+          }
+        }
+      }
+      return resultArr;
+    }
+    let resultOfTask = getArrayOfNumbersMoreThan2000(storesProfit, 200);
+    document.write(`Список, у якому усі значення більші за 200 [${resultOfTask}]`);
+  </script>
+</body>
+
+</html>

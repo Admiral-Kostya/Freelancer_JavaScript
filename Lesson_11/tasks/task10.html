@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>task2.3</title>
+</head>
+
+<body>
+  <p>
+    2.3 загальний прибуток за робочі дні
+  </p>
+  <script>
+    const storesProfit = [
+      [1000, 5000, 4000, 2000, 5000, 4000, 1000],
+      [1500, 1600, 2000, 4000, 2000, 1000, 2000],
+      [5000, 4000, 2000, 2000, 1000, 2000, 1500],
+      [2500, 3500, 1000, 2000, 3000, 4000, 3500],
+    ];
+    function getProfitPerWorkingDays(array, qtyOfWorkingDays) {
+      let totalSumPerWorkingDays = array.reduce(
+        (prevTotalSum, row) =>
+          prevTotalSum +
+          row.reduce((prevRowSum, element, index) =>
+            index < qtyOfWorkingDays ? prevRowSum + element : prevRowSum
+          ),
+        0
+      );
+      return totalSumPerWorkingDays;
+    }
+
+    let resultOfTask = getProfitPerWorkingDays(storesProfit, 5);
+    document.write(
+      `Загальний прибуток всіх магазинів за робочі дні: ${resultOfTask}$`
+    );
+  </script>
+</body>
+
+</html>

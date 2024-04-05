@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>task6</title>
+</head>
+
+<body>
+  <p>
+    1.6 Суму непарних стовпців
+  </p>
+  <script>
+    const array = [
+      [1, 2, 3, 4, 5, 4],
+      [45, 23, 6, 9, 21, 1],
+      [12, 14, 15, 14],
+      [7, 5, 4, 7, 3, 21],
+      [12, 14, 15, 14],
+    ];
+
+    let sum = 0;
+    for (let rowIndex = 0; rowIndex < array.length; rowIndex++) {
+      for (let colIndex = 0; colIndex < array[rowIndex].length; colIndex++) {
+        if (colIndex % 2 != 0) {
+          sum += array[rowIndex][colIndex];
+        }
+      }
+    }
+    document.write(`Суму непарних стовпців = ${sum}`);
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>task 2</title>
+</head>
+
+<body>
+  <p>
+    2. Дано інформацію про прибуток К магазинів протягом тижня. Знайти :
+
+  </p>
+  <p>
+    2.1 загальний прибуток кожного масиву за тиждень;
+  </p>
+  <script>
+    function getTotalSumPerEachWeek(array) {
+      let totalSum = 0;
+      let resultArr = [];
+      for (let rowIndex = 0; rowIndex < array.length; rowIndex++) {
+        for (let colIndex = 0; colIndex < array[rowIndex].length; colIndex++) {
+          totalSum += array[rowIndex][colIndex];
+        }
+        resultArr.push(totalSum);
+      }
+      return resultArr;
+    }
+    let resultOfTask = getTotalSumPerEachWeek(storesProfit);
+    resultOfTask.forEach((element, index) => {
+      document.write(
+        `Загальний прибуток магазина за тиждень - ${index + 1
+        }, становить - ${element}$. <br> `
+      );
+    });
+
+  </script>
+</body>
+
+</html>
