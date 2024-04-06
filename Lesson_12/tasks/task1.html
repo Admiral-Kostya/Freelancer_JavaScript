@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>task1</title>
+</head>
+
+<body>
+  <p>
+    Задача 1. Дано масив 30 випадкових цілих чисел. Підрахувати скільки було обмінів та порівнянь чисел під час
+    сортування бульбашкою
+
+  </p>
+  <script>
+    function getRandomArray(startIndex, arrayLength, numMinValue, numMaxValue) {
+      let notSortedArray = [];
+      for (let i = startIndex; i < arrayLength; i++) {
+        let num = numMinValue + Math.floor(Math.random() * numMaxValue);
+        notSortedArray.push(num);
+      }
+      return notSortedArray;
+    }
+    let resultnotSortedArray = getRandomArray(0, 30, 1, 100);
+    document.write(`<p>Невідсортований масив  - [${resultnotSortedArray}]</p>`)
+    function swap(prevElement, currentElement, array) {
+      let tmp = array[prevElement];
+      array[prevElement] = array[currentElement];
+      array[currentElement] = tmp;
+      return array;
+    }
+    function bubbleSort(array) {
+      let changed;
+      let qtyOfCompares = 0
+      let qtyOfChanges = 0
+      do {
+        changed = false;
+        for (let i = 1; i < array.length; i++) {
+          qtyOfCompares++
+          if (array[i - 1] > array[i]) {
+            swap(i - 1, i, resultnotSortedArray);
+
+            changed = true;
+            qtyOfChanges++
+          }
+        }
+      } while (changed);
+      document.write(`<p>Кількість порівнянь - ${qtyOfCompares}</p>`)
+      document.write(`<p>Кількість обмінів - ${qtyOfChanges}</p>`)
+      return array;
+    }
+    let resultSortedArray = bubbleSort(resultnotSortedArray);
+    document.write(`<p>Відсортований масив за допомогою алгоритму сортування 'Bubble Sort' - [${resultSortedArray}]</p>`)
+
+  </script>
+</body>
+
+</html>

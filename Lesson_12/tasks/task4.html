@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>task4</title>
+</head>
+
+<body>
+  <p>
+    Задача 4. Для розглянутих методів сортування спробувати вивести етапи сортування шляхом виведення відповідних
+    таблиць за зразком .
+
+  </p>
+  <script>
+
+    function swap(prevElement, currentElement, array) {
+      let tmp = array[prevElement];
+      array[prevElement] = array[currentElement];
+      array[currentElement] = tmp;
+      return array;
+    }
+    //--------------------------------------------------------
+    document.write(`<p>Етапи сортування методом 'Bubble Sort'</p>`)
+    const resultnotSortedArray1 = [2, 5, 3, 1, 6, 9]
+    let changed;
+    do {
+      changed = false;
+      for (let i = 1; i < resultnotSortedArray1.length; i++) {
+        if (resultnotSortedArray1[i - 1] > resultnotSortedArray1[i]) {
+          swap(i - 1, i, resultnotSortedArray1);
+          changed = true;
+          document.write(`<p>[${resultnotSortedArray1}]</p>`)
+        }
+
+      }
+    } while (changed);
+    //--------------------------------------------------------
+    document.write(`<p>Етапи сортування методом 'Coctail Sort'</p>`)
+    const resultnotSortedArray2 = [2, 5, 3, 1, 6, 9]
+    let leftIndex = 0;
+    let rightIndex = resultnotSortedArray2.length - 1;
+
+    while (leftIndex < rightIndex) {
+      let changed = false;
+      for (let i = leftIndex + 1; i <= rightIndex; i++) {
+        if (resultnotSortedArray2[i - 1] > resultnotSortedArray2[i]) {
+          swap(i - 1, i, resultnotSortedArray2);
+          changed = true;
+          document.write(`<p>[${resultnotSortedArray2}]</p>`)
+        }
+      }
+      rightIndex--;
+      if (changed === false) break;
+      changed = false;
+      for (let i = rightIndex; i > leftIndex; i--) {
+        if (resultnotSortedArray2[i - 1] > resultnotSortedArray2[i]) {
+          swap(i - 1, i, resultnotSortedArray2);
+          changed = true;
+          document.write(`<p>[${resultnotSortedArray2}]</p>`)
+        }
+      }
+      leftIndex++;
+      if (changed === false) break;
+    }
+    //--------------------------------------------------------
+    document.write(`<p>Етапи сортування методом 'Insert Sort'</p>`)
+    const resultnotSortedArray3 = [2, 5, 3, 1, 6, 9]
+    let key, i
+
+    for (let k = 0; k < resultnotSortedArray3.length; k++) {
+      key = resultnotSortedArray3[k]
+      i = k - 1
+      while (i >= 0 && resultnotSortedArray3[i] > key) {
+        resultnotSortedArray3[i + 1] = resultnotSortedArray3[i]
+        i = i - 1
+        document.write(`<p>[${resultnotSortedArray3}]</p>`)
+      }
+      resultnotSortedArray3[i + 1] = key
+    }
+  </script>
+</body>
+
+</html>
