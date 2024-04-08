@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>task1</title>
+</head>
+
+<body>
+  <p>
+    Задача 1. Описати масив об’єктів – сайтів розроблених компанією з такими властивостями
+    ----- Властивості ------
+    назва компанії на час розробки (назву періодично змінюють)
+    власник компанії
+    споснсори (масив спонсорів)
+    * прізвище спонсора
+    * ім’я спонсора
+    * сума вкладень спонсора
+    рік випуску
+    вартість сайту
+    Знайти:
+
+  </p>
+  <p>
+    1.1 загальну вартість усіх сайтів
+  </p>
+  <p>
+    1.2 кількість сайтів, що було зроблено між 2000 та 2009 рр.
+  </p>
+  <p>
+    1.3 кількість сайтів, де сума спонсорських вкладень була більшою за 100000
+  </p>
+  <p>
+    1.4 створити загальний список усіх спонсорів (поки можуть повторюватись, просто зібрати усі у масив)
+  </p>
+  <p>
+    1.5 знайти рік, коли прибуток був найбільшим
+  </p>
+  <p>
+    1.6 упорядкувати список за спаданням прибутку
+  </p>
+  <p>
+    1.7 Створити 2 окремих списки з копіями об’єктів, що містять сайти з вартість до 10000 і більше 10000
+  </p>
+  <br>
+  <br>
+  <script>
+
+    let arrayOfWebSites = [
+      {
+        companyName: "Avalanche",
+        ownerOfCompany: 'Binance',
+        sponsors: [
+          {
+            sponsorSurname: 'Pie',
+            sponsorName: 'John',
+            invesmentAmount: 10000
+          },
+          {
+            sponsorSurname: 'Connery',
+            sponsorName: 'Shon',
+            invesmentAmount: 9000
+          },
+          {
+            sponsorSurname: 'Williams',
+            sponsorName: 'Ron',
+            invesmentAmount: 12000
+          }
+        ],
+        yearOfIssue: 2000,
+        costOfTheSite: 100000
+      },
+      {
+        companyName: "Polkadot",
+        ownerOfCompany: 'ByBit',
+        sponsors: [
+          {
+            sponsorSurname: 'Gven',
+            sponsorName: 'Sam',
+            invesmentAmount: 7000
+          },
+          {
+            sponsorSurname: 'Del Ray',
+            sponsorName: 'Lana',
+            invesmentAmount: 20000
+          },
+          {
+            sponsorSurname: 'Wesley',
+            sponsorName: 'Paul',
+            invesmentAmount: 1200000
+          }
+        ],
+        yearOfIssue: 2005,
+        costOfTheSite: 50000
+      },
+      {
+        companyName: "Ethereum",
+        ownerOfCompany: 'Buterin',
+        sponsors: [
+          {
+            sponsorSurname: 'Ramsey',
+            sponsorName: 'Gordon',
+            invesmentAmount: 15500
+          },
+          {
+            sponsorSurname: 'Ellan',
+            sponsorName: 'Fill',
+            invesmentAmount: 20000
+          },
+          {
+            sponsorSurname: 'Wiiliam',
+            sponsorName: 'Robbin',
+            invesmentAmount: 12000
+          }
+        ],
+        yearOfIssue: 2007,
+        costOfTheSite: 25000
+      },
+      {
+        companyName: "Atom",
+        ownerOfCompany: 'OKX',
+        sponsors: [
+          {
+            sponsorSurname: 'Ford',
+            sponsorName: 'Ramsey',
+            invesmentAmount: 15600
+          },
+          {
+            sponsorSurname: 'Fill',
+            sponsorName: 'Ellan',
+            invesmentAmount: 65000
+          },
+          {
+            sponsorSurname: 'Turman',
+            sponsorName: 'Uma',
+            invesmentAmount: 120000
+          }
+        ],
+        yearOfIssue: 2012,
+        costOfTheSite: 8000
+      }
+    ]
+    //----------------------------------------------------------------------
+    let totalCostOfAllWebSites = arrayOfWebSites.reduce((prevSum, site) => prevSum + site.costOfTheSite, 0)
+    document.write(`<p>1.1 Загальна вартість усіх сайтів складає - ${totalCostOfAllWebSites}$</p>`)
+    //----------------------------------------------------------------------
+    let qtyOfSitesBetween2000And2009 = arrayOfWebSites.reduce((prevSum, site) => site.yearOfIssue > 2000 && site.yearOfIssue < 2009 ? prevSum = prevSum + 1 : prevSum, 0)
+    document.write(`<p>1.2 Кількість сайтів, що було зроблено між 2000 та 2009 рр. - ${qtyOfSitesBetween2000And2009}</p>`)
+    //----------------------------------------------------------------------
+    function getBiggestInvestments(array, compareValue) {
+      let qtyOfSites = 0;
+      let totalSumOfInvestments = 0;
+      for (const site of array) {
+        totalSumOfInvestments = site.sponsors.reduce(
+          (prevSum, amount) => prevSum + amount.invesmentAmount,
+          0
+        );
+        if (totalSumOfInvestments > compareValue) {
+          qtyOfSites += 1;
+        }
+      }
+      return qtyOfSites;
+    }
+    let biggestSponsorsInvestment = getBiggestInvestments(arrayOfWebSites, 100000);
+    document.write(`<p>1.3 Кількість сайтів, де сума спонсорських вкладень була більшою за 100000 - ${biggestSponsorsInvestment}</p>`)
+    //----------------------------------------------------------------------
+    function getCommonListOfSponsors(array) {
+      let resultArray = [];
+      for (const site of array) {
+        let arrayOfNames = site.sponsors.map(
+          (sponsor) => `${sponsor.sponsorName} ${sponsor.sponsorSurname}`
+        );
+        resultArray.push(...arrayOfNames);
+      }
+      return resultArray;
+    }
+    let resultListOfSponsors = getCommonListOfSponsors(arrayOfWebSites);
+    document.write(`<p>1.4 Загальний список усіх спонсорів - [${resultListOfSponsors}]</p>`)
+    //----------------------------------------------------------------------
+    function getYearWithBiggestProfit(array) {
+      let compareValue = 0;
+      let year = 0;
+      arrayOfWebSites.forEach((element) => {
+        if (element.costOfTheSite > compareValue) {
+          compareValue = element.costOfTheSite;
+          year = element.yearOfIssue;
+        }
+      });
+      return year
+    }
+    let resultBiggestProfit = getYearWithBiggestProfit(arrayOfWebSites);
+    //тут я вирішив трохи поексперементувати
+    // function getYearWithBiggestProfit(array) {
+    //   let resultArrayOfPrices = [];
+    //   let changed;
+    //   let resultYear = 0;
+    //   array.forEach((element) => {
+    //     resultArrayOfPrices.push(element.costOfTheSite);
+    //   });
+    //   do {
+    //     changed = false;
+    //     for (let i = 1; i < resultArrayOfPrices.length; i++) {
+    //       if (resultArrayOfPrices[i - 1] > resultArrayOfPrices[i]) {
+    //         let temporary = resultArrayOfPrices[i - 1];
+    //         resultArrayOfPrices[i - 1] = resultArrayOfPrices[i];
+    //         resultArrayOfPrices[i] = temporary;
+    //         changed = true;
+    //       }
+    //     }
+    //   } while (changed);
+    //   let compare = resultArrayOfPrices[0];
+    //   for (let i = 0; i < resultArrayOfPrices.length; i++) {
+    //     if (resultArrayOfPrices[i] > compare) compare = resultArrayOfPrices[i];
+    //   }
+    //   for (const site of array) {
+    //     if (site.costOfTheSite === compare) resultYear = site.yearOfIssue;
+    //   }
+    //   return resultYear;
+    // }
+    //  let resultBiggestProfit = getYearWithBiggestProfit(arrayOfWebSites);
+    document.write(`<p>1.5 Рік, коли прибуток був найбільшим - ${resultBiggestProfit}</p>`)
+    //----------------------------------------------------------------------
+    function getSortedObject(array) {
+      array.sort((a, b) => {
+        return b.costOfTheSite - a.costOfTheSite;
+      });
+      return array;
+    }
+    let resultSortedObject = getSortedObject(arrayOfWebSites);
+    document.write(`<p>1.6 упорядкувати список за спаданням прибутку</p>`)
+    for (const item of resultSortedObject) {
+      document.write(`<p>${item.costOfTheSite}</p>`)
+    }
+    //----------------------------------------------------------------------
+    let listMoreThan10000 = [];
+    let listLessThan10000 = [];
+    arrayOfWebSites.forEach((item) => {
+      let copy = JSON.parse(JSON.stringify(item));
+      if (copy.costOfTheSite < 10000) {
+        listLessThan10000.push(copy);
+      } else if (copy.costOfTheSite > 10000) {
+        listMoreThan10000.push(copy);
+      }
+    });
+
+    document.write(`<p>1.7.1 Вартість сайтів до 10000</p>`)
+    for (const item of listLessThan10000) {
+      document.write(`<p>${item.costOfTheSite}</p>`)
+    }
+    document.write(`<p>1.7.2 Вартість сайтів більше 10000</p>`)
+    for (const item of listMoreThan10000) {
+      document.write(`<p>${item.costOfTheSite}</p>`)
+    }
+  </script>
+</body>
+
+</html>

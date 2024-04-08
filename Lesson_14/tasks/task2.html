@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>task2</title>
+</head>
+
+<body>
+  <p>
+    Задача 2. Розробити функцію, у яку передають об’єкт (день, місяць, рік). Визначити, який буде рік через N
+    місяців.
+
+  </p>
+  <script>
+    let incomeObject = {
+      day: 12,
+      month: 11,
+      year: 1997,
+    };
+    let { year } = incomeObject
+    document.write(`<p>У об'єкті вказан ${year} рік.</p>`)
+    function getYearInNMonths(object, qtyOfMonths, monthsInYear) {
+      let separatedYears = Math.floor(qtyOfMonths / monthsInYear);
+      let separatedMonths = qtyOfMonths % monthsInYear;
+      let { month, year } = object;
+      let resultYear = separatedYears + year;
+      if (separatedMonths + month >= monthsInYear) resultYear += 1;
+      document.write(`<p>Через ${qtyOfMonths} місяців буде ${resultYear} рік</p>`)
+      return resultYear;
+    }
+    let resultYearInNMonths = getYearInNMonths(incomeObject, 107, 12);
+
+  </script>
+
+</body>
+
+</html>
