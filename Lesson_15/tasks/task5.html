@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>task5</title>
+</head>
+
+<body>
+  <p>
+    Задача 5. Розробити клас MultChecker для перевірки таблиці множення
+    Поля
+    Число, яке перевіряємо (наприклад, перевірка частини таблиці множення на 7)
+    Кількість правильних відповідей
+    Кількість неправильних відповідей
+    Методи
+    Генерування прикладу (метод випадковим чином визначає друге число, перше число фіксоване)
+    Перевірка правильності вказаної відповіді
+    render - виведення інформації про тестування на екран
+  </p>
+  <script>
+    class Baner {
+      constructor(bannerData) {
+        this.bannerData = bannerData;
+      }
+      getRandomObject() {
+        let randomObject = 0 + Math.floor(Math.random() * this.bannerData.length);
+        return this.bannerData[randomObject];
+      }
+      run() {
+        let showBaner = this.getRandomObject();
+        document.write(
+          ` <img style="width: 300px; height: 300px; display:block;" src="${showBaner.imgSrc}" alt="">`
+        );
+        document.write(
+          `<a style="font-size: 24px; color:black" href="${showBaner.link}">Link</a>`
+        );
+      }
+    }
+
+    let banner1 = new Baner([
+      {
+        imgSrc:
+          "https://www.templatemonster.com/ru/faq/wp-content/uploads/2013/09/logo-youtube.jpg",
+        link: "https://www.youtube.com/",
+      },
+      {
+        imgSrc: "https://to4ka.fun/wp-content/uploads/2023/05/ROZETKA-2.jpg",
+        link: "https://rozetka.com.ua/",
+      },
+      {
+        imgSrc: "https://s3-symbol-logo.tradingview.com/amazon--600.png",
+        link: "https://www.amazon.com/",
+      },
+    ]);
+    banner1.run();
+  </script>
+</body>
+
+
+</html>

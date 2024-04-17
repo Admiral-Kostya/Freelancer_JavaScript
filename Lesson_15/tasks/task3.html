@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>task3</title>
+</head>
+
+<body>
+  <p>
+    Задача 3. Створити об’єкт «Авто».
+    Авто
+
+
+    Поля(властивості)
+    Марка
+    Розмір бака
+    Кількість наявних літрів
+    Кількість місць
+    Кількість пасажирів
+    Методи (дії)
+    Заправка на вказану кількість літрів
+    Виведення кількості пасажирів
+    Додавання пасажирів
+    Висадка пасажирів
+  </p>
+
+  <script>
+    let someCar = {
+      // поля
+      carName: "Ford",
+      tankSize: 70,
+      actualQtyOfLitres: 35,
+      qtyOfSittingPlaces: 7,
+      qtyOfPassangers: 5,
+      // Методи (дії)
+      fillTheCar: function (qtyOfLitres) {
+        if (this.tankSize - this.actualQtyOfLitres >= qtyOfLitres) {
+          this.actualQtyOfLitres += qtyOfLitres;
+        } else {
+          console.log(
+            `Можна заправити не більше ніж ${this.tankSize - this.actualQtyOfLitres
+            } літрів`
+          );
+        }
+      },
+      getQtyOfPassangers: function () {
+        let qtyOfPassangers = `Зараз у машині знаходяться ${this.qtyOfPassangers} пассажира`;
+        return qtyOfPassangers;
+      },
+      addSomePassengers: function (numberOfPassengers) {
+        if (this.qtyOfSittingPlaces - this.qtyOfPassangers >= numberOfPassengers) {
+          this.qtyOfPassangers += numberOfPassengers;
+        } else {
+          console.log(
+            `У машину можуть сісти не більше ${this.qtyOfSittingPlaces - this.qtyOfPassangers
+            } пасажири`
+          );
+        }
+      },
+      disembarkSomePassengers: function (numberOfPassengers) {
+        if (this.qtyOfPassangers - numberOfPassengers >= 0) {
+          this.qtyOfPassangers -= numberOfPassengers;
+        } else {
+          console.log(`Ви не можете висадити ${numberOfPassengers} людей `);
+        }
+      },
+    };
+
+  </script>
+</body>
+
+</html>

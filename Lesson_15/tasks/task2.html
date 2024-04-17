@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>task2</title>
+</head>
+
+<body>
+  <p>
+    Задача 2. Створити об’єкт «Тир». У масиві зберігаються 1, якщо у цьому квадраті є заєць і 0 в іншому випадку.
+    Тир
+    Поля(властивості)
+    Масив, у якому зберігається поле з зайцями
+    Методи (дії)
+    Метод пострілу (задається позиція пострілу)
+    Виведення ігрового поля
+  </p>
+  <script>
+    class ShootingGallery {
+      constructor(arrayField) {
+        this.arrayField = arrayField;
+      }
+      getSomeShooting(qtyOFAttempts, hitTheTarget) {
+        let arrayOfResults = [];
+        let positiveShooting = 0;
+        let negativeShooting = 0;
+        for (let i = 0; i <= qtyOFAttempts; i++) {
+          let attemptFromGamer = parseInt(
+            prompt("Зробіть постріл обираючи число від 0 до 5")
+          );
+          if (this.arrayField[attemptFromGamer] === hitTheTarget)
+            positiveShooting++;
+          else negativeShooting++;
+        }
+        arrayOfResults[0] = positiveShooting;
+        arrayOfResults[1] = negativeShooting;
+        return arrayOfResults;
+      }
+      getResultOfShooting() {
+        let resultOfShooting = this.getSomeShooting(2, 1);
+        alert(
+          `Кількість вдалих пострілів - ${resultOfShooting[0]}  Кількість невдалих пострілів - ${resultOfShooting[1]}`
+        );
+        alert(`${this.arrayField}`);
+      }
+    }
+
+    let shootTheRabbit = new ShootingGallery([0, 1, 0, 0, 1, 0]);
+    shootTheRabbit.getResultOfShooting();
+  </script>
+
+</body>
+
+</html>

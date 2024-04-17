@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>task6</title>
+</head>
+
+<body>
+  <p>
+    Задача 6. Розробити клас «Керівник танців»
+    Поля
+    Масив імен хлопців
+    Масив імен дівчат
+    Методи
+    Метод випадкового вибору імені хлопця
+    Метод випадкового вибору імені дівчини
+    Метод виведення пари для танців
+    Метод run , який ініціює через кожні 5 секунд виведення нової пари для танців
+  </p>
+  <script>
+    class DanceTrainee {
+      constructor(boysNames, girlsNames) {
+        (this.boysNames = boysNames), (this.girlsNames = girlsNames);
+      }
+      getRandomBoy() {
+        let randomBoyName = 0 + Math.floor(Math.random() * this.boysNames.length);
+        return this.boysNames[randomBoyName];
+      }
+      getRandomGirl() {
+        let randomGirlName = 0 + Math.floor(Math.random() * this.girlsNames.length);
+        return this.girlsNames[randomGirlName];
+      }
+      getRandomPairForDance() {
+        alert(`Пара для танців ${this.getRandomGirl()} та ${this.getRandomBoy()}`);
+      }
+      run() {
+        setInterval(() => {
+          this.getRandomPairForDance();
+        }, 5000);
+      }
+    }
+    let pairForDance = new DanceTrainee(
+      [`Ivan`, "Kostya", "Andrew", "Alex", "Sam"],
+      ["July", "Lara", "Margo", "Sara", "Cleo"]
+    );
+    pairForDance.run();
+  </script>
+</body>
+
+</html>
