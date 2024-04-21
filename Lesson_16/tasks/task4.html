@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>task4</title>
+</head>
+
+<body>
+  <p>
+    Задача 4. Створити клас TBankomat, який моделює роботу банкомата. Клас повинен містити поля для зберігання кількості
+    купюр кожного із номіналів від 5 до 200 гривень. Реалізувати методи знаходження максимальної та мінімальної сум, які
+    може видати банкомат, та метод зняття деякої суми.
+  </p>
+  <script>
+    class TBankomat {
+      constructor(banknotes) {
+        this.banknotes = banknotes;
+      }
+      getMaxAmount() {
+        let totalAmount = this.banknotes
+          .map((element) => element.banknotType * element.numberOfBanknots)
+          .reduce((prevCount, el) => prevCount + el, 0);
+        return totalAmount;
+      }
+      getMinAmount() {
+        let sortedBanknoteValues = this.banknotes
+          .map((el) => el.banknotType)
+          .sort((a, b) => a - b);
+        return sortedBanknoteValues[0];
+      }
+      // Тут я тупанув, але чомусь не хочеться видаляти
+      // withdrawSomeMoney(amount) {
+      //   let arrayOfResults = [];
+      //   let arrayOfBanknotes = this.banknotes
+      //     .map((el) => el.banknotType)
+      //     .sort((a, b) => a - b);
+      //   let arrayOfQtys = this.banknotes
+      //     .map((el) => el.numberOfBanknots)
+      //     .sort((a, b) => a - b);
+      //   let counter = 0;
+      //   let desiredAmount = amount;
+      //   do {
+      //     let randomIndex = Math.floor(Math.random() * arrayOfBanknotes.length);
+      //     let randomBanknote = arrayOfBanknotes[randomIndex];
+      //     if (
+      //       counter + randomBanknote <= desiredAmount &&
+      //       arrayOfQtys[randomIndex] > 0
+      //     ) {
+      //       counter += randomBanknote;
+      //       console.log(randomBanknote);
+      //       arrayOfQtys[randomIndex]--;
+      //     }
+      //   } while (counter < desiredAmount && arrayOfQtys.some((qty) => qty > 0));
+      //   arrayOfResults.push(counter);
+      //   arrayOfResults.push(arrayOfQtys);
+      //   return arrayOfResults;
+      // }
+      withdrawSomeMoney(amount) {
+        let remainingAmount = amount;
+        const withdrawnBills = [];
+        for (let i = this.banknotes.length - 1; i >= 0; i--) {
+          const bill = this.banknotes[i];
+          const count = Math.min(
+            Math.floor(remainingAmount / bill.banknotType),
+            bill.numberOfBanknots
+          );
+          if (count > 0) {
+            remainingAmount -= count * bill.banknotType;
+            this.banknotes[i].numberOfBanknots -= count;
+            withdrawnBills.push({
+              banknotType: bill.banknotType,
+              count: count,
+            });
+          }
+          if (remainingAmount === 0) {
+            break;
+          }
+        }
+        if (remainingAmount > 0) {
+          console.log(
+            "Не удалось выполнить операцию: недостаточно средств в банкомате."
+          );
+          return null;
+        }
+        return withdrawnBills;
+      }
+      toString() {
+        return ` Maxium amount of money - ${this.getMaxAmount()}UAH <br/> Minimum amount of money - ${this.getMinAmount()}UAH <br/> `;
+      }
+    }
+
+    let banknotes = [
+      {
+        banknotType: 5,
+        numberOfBanknots: 10,
+      },
+      {
+        banknotType: 10,
+        numberOfBanknots: 20,
+      },
+      {
+        banknotType: 20,
+        numberOfBanknots: 40,
+      },
+      {
+        banknotType: 50,
+        numberOfBanknots: 100,
+      },
+      {
+        banknotType: 100,
+        numberOfBanknots: 300,
+      },
+      {
+        banknotType: 200,
+        numberOfBanknots: 500,
+      },
+    ];
+
+    let bankomat = new TBankomat(banknotes);
+    document.write(bankomat);
+    let showBankomatBeforeWithdrawing = banknotes
+      .map((el) => el.numberOfBanknots)
+      .sort((a, b) => a - b);
+    document.write(
+      `<p>Quantity of each banknot before withdrawing - [${showBankomatBeforeWithdrawing}] </p>`
+    );
+
+    const amountToWithdraw = 315;
+    const withdrawn = bankomat.withdrawSomeMoney(amountToWithdraw);
+    if (withdrawn) {
+      document.write(`<p>Withdrawn  ${amountToWithdraw} UAH:</p>`);
+      withdrawn.forEach((bill) => {
+        document.write(`<p>${bill.count} купюр по ${bill.banknotType} грн</p>`);
+      });
+    }
+    let showBankomatAfterWithdrawing = banknotes
+      .map((el) => el.numberOfBanknots)
+      .sort((a, b) => a - b);
+    document.write(
+      `<p>Quantity of each banknot after withdrawing - [${showBankomatAfterWithdrawing}] </p>`
+    );
+    console.log(banknotes);
+    document.write(
+      `<p>The desired amount ${resultOfWithdrawSomeMoney[0]}UAH has been issued <br/> Quantity of each banknot remained after issuance [${resultOfWithdrawSomeMoney[1]}]</p> `
+    );
+  </script>
+</body>
+
+</html>

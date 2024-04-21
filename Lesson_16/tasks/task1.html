@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>task1</title>
+</head>
+
+<body>
+  <p>
+    Задача 1. Створити клас TDate для роботи із датами у форматі “день.місяць.рік”. Дата представляється структурою із
+    трьома полями. Реалізувати методи збільшення/зменшення дати на певну кількість днів, місяців чи років. Введення та
+    виведення дати реалізувати за допомогою методу toString.
+
+  </p>
+
+  <script>
+    class TDate {
+      constructor(day, month, year) {
+        this.day = day;
+        this.month = month;
+        this.year = year;
+      }
+      addDays(days) {
+        this.day += days;
+        while (this.day > 30) {
+          this.day -= 30;
+          this.month++;
+          if (this.month > 12) {
+            this.month = 1;
+            this.year++;
+          }
+        }
+        while (this.day < 1) {
+          this.month--;
+          if (this.month < 1) {
+            this.month = 12;
+            this.year--;
+          }
+          this.day += 30;
+        }
+      }
+      addMonths(months) {
+        this.month += months;
+        while (this.month > 12) {
+          this.month -= 12;
+          this.year++;
+        }
+        while (this.month < 1) {
+          this.month += 12;
+          this.year--;
+        }
+      }
+      addYears(years) {
+        this.year += years;
+      }
+
+      toString() {
+        return `${this.day}.${this.month}.${this.year}`;
+      }
+    }
+    const myDate = new TDate(21, 4, 2024);
+    document.write(`<p>Current date: ${myDate.toString()}</p>`);
+    myDate.addDays(10);
+    document.write(`<p>Date after adding 10 days: ${myDate.toString()}</p>`);
+    myDate.addMonths(2);
+    document.write(`<p>Date after adding 2 months: ${myDate.toString()}</p>`);
+    myDate.addYears(1);
+    document.write(`<p>Date after adding 1 year: ${myDate.toString()}</p>`);
+  </script>
+</body>
+
+</html>

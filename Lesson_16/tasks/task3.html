@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>task3</title>
+</head>
+
+<body>
+  <p>
+    Об’єкт “Фірма” (використати члени-класи)
+    поля
+    назва фірми;
+    дата заснування (рік, місяць);
+    послуги (назва послуги, вартість, термін виконання);
+    адреси філіалів (країна, місто, вулиця, номер будинку);
+    методи
+    визначення кількості років існування фірми;
+    виведення всіх філіалів фірми у вказаному місті;
+    виведення на екран послуг, що можуть бути виконані за вказану суму грошей та вказаний термін часу;
+  </p>
+
+  <script>
+    class Company {
+      #companyName;
+      constructor(
+        companyName,
+        companyfoundingDate,
+        companyServices,
+        companyAddresses
+      ) {
+        (this.CompanyName = companyName),
+          (this.companyfoundingDate = companyfoundingDate),
+          (this.companyServices = companyServices),
+          (this.companyAddresses = companyAddresses);
+      }
+      get CompanyName() {
+        return this.#companyName;
+      }
+      set CompanyName(newName) {
+        if (newName.trim().length === 0) throw new Error(`The name is not correct`);
+        this.#companyName = newName;
+      }
+      getYearsOfExistence(yearCurrent = 2024, monthCurrent = 4) {
+        let currentYear = yearCurrent;
+        let currentMonth = monthCurrent;
+        let { year, month } = this.companyfoundingDate;
+        let yearsOfExistence = currentYear - year;
+        if (currentMonth + month > 12) yearsOfExistence++;
+        return yearsOfExistence;
+      }
+      getAllBranchesInChosenCity(choosenCity) {
+        let allBranches1 = this.companyAddresses.reduce(
+          (prevCount, element) =>
+            element.city === choosenCity ? [...prevCount, element] : [...prevCount],
+          []
+        );
+        return allBranches1;
+      }
+      getServicesToBeDoneProvided(priceLimit, timeLimit) {
+        if (!isNaN(priceLimit) && !isNaN(timeLimit)) {
+          let companyServices = this.companyServices
+            .reduce(
+              (prevCount, value) =>
+                value.servicePrice <= priceLimit &&
+                  value.termOfCreating <= timeLimit
+                  ? [...prevCount, value]
+                  : [...prevCount],
+              []
+            )
+            .map((service) => service.serviceName);
+          return companyServices;
+        }
+      }
+      toString() {
+        return `Company Name -  ${this.CompanyName
+          } <br/> Years Of Existence - ${this.getYearsOfExistence()} years <br/>`;
+      }
+    }
+    let companyfoundingDate = {
+      year: 2010,
+      month: 6,
+    };
+    let companyAddresses = [
+      {
+        country: "Israel",
+        city: "Tel-Aviv",
+        street: "Rotshild st.",
+        buildingNumber: 25,
+      },
+      {
+        country: "Israel",
+        city: "Tel-Aviv",
+        street: "Jabotinsky st.",
+        buildingNumber: 115,
+      },
+      {
+        country: "Israel",
+        city: "Tel-Aviv",
+        street: "Alenby st.",
+        buildingNumber: 34,
+      },
+      {
+        country: "Scotland",
+        city: "Edinburgh",
+        street: "Marry Queen st.",
+        buildingNumber: 13,
+      },
+      {
+        country: "Ukraine",
+        city: "Odesa",
+        street: "Govorova st.",
+        buildingNumber: 32,
+      },
+    ];
+    let companyServices = [
+      {
+        serviceName: "Web Developing",
+        servicePrice: 1500,
+        termOfCreating: 21,
+      },
+      {
+        serviceName: "Web Design",
+        servicePrice: 1000,
+        termOfCreating: 14,
+      },
+      {
+        serviceName: "SMM",
+        servicePrice: 800,
+        termOfCreating: 30,
+      },
+      {
+        serviceName: "QA",
+        servicePrice: 1000,
+        termOfCreating: 21,
+      },
+    ];
+    let company1 = new Company(
+      "Switch Up",
+      companyfoundingDate,
+      companyServices,
+      companyAddresses
+    );
+    document.write(company1);
+    let allBranchesInChoosenCity = company1.getAllBranchesInChosenCity("Odesa"); // массив объектов
+    let servicesToBeDoneProvided = company1.getServicesToBeDoneProvided("1000", 30); // массив значений
+
+    document.write(`<p>Addresses of all branches in choosen city:</p>`);
+    if (allBranchesInChoosenCity.length !== 0) {
+      allBranchesInChoosenCity.forEach((item) => {
+        for (const address in item) {
+          document.write(`${item[address]}, &nbsp`);
+        }
+        document.write(`<br/>`);
+      });
+    } else {
+      document.write(`<p>Ups! There are no brances in this city</p>`);
+    }
+    document.write(`<p>Services that meet the conditions:</p>`);
+    if (servicesToBeDoneProvided.length !== 0) {
+      servicesToBeDoneProvided.forEach((el, index) => {
+        document.write(`<p>${index + 1}: ${el}</p>`);
+      });
+    } else {
+      document.write(`<p>Ups! There are no services that meet the conditions</p>`);
+    }
+  </script>
+</body>
+
+</html>

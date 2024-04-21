@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>task2</title>
+</head>
+
+<body>
+  <p>
+    Задача 2. Створити клас TMoney для роботи з грошовими сумами. Сума повинна зберігатися у вигляді доларового
+    еквіваленту. Реалізувати методи додавання/вилучення грошової маси, вказуючи необхідну суму у гривнях, та визначення
+    курсу долара, при якому сума у гривнях збільшиться на 100. Курс долара зберігати в окремому полі.
+  </p>
+  <script>
+    class TMoney {
+      #currencyRate;
+      #amountInUAH;
+      constructor(
+        amountInUAH,
+        currencyRate,
+        addedAmount = 1000,
+        withdrawedAmount = 0
+      ) {
+        (this.AmountInUAH = amountInUAH),
+          (this.CurrencyRate = currencyRate),
+          (this.addedAmount = addedAmount),
+          (this.withdrawedAmount = withdrawedAmount);
+      }
+      get CurrencyRate() {
+        return this.#currencyRate;
+      }
+      set CurrencyRate(currentCurrencyRate) {
+        if (currentCurrencyRate <= 0)
+          throw new Error(`This is not real currency rate`);
+        this.#currencyRate = currentCurrencyRate;
+      }
+      get AmountInUAH() {
+        return this.#amountInUAH;
+      }
+      set AmountInUAH(currentamountInUAH) {
+        if (currentamountInUAH <= 0) throw new Error(`This is not real amount`);
+        this.#amountInUAH = currentamountInUAH;
+      }
+      getActualMoney() {
+        if (this.addedAmount) return this.AmountInUAH + this.addedAmount;
+        else return this.AmountInUAH - this.withdrawedAmount;
+      }
+      getClientsMoneyInUSD() {
+        let resultOfMoneyInUSD = this.AmountInUAH / this.CurrencyRate;
+        return resultOfMoneyInUSD;
+      }
+      calculateMoney() {
+        if (this.addedAmount)
+          return this.getClientsMoneyInUSD() + this.addedAmount / this.CurrencyRate;
+        else
+          return (
+            this.getClientsMoneyInUSD() - this.withdrawedAmount / this.CurrencyRate
+          );
+      }
+      getTheResultOfAmount() {
+        let resultOfCalculating = this.calculateMoney();
+        if (resultOfCalculating) return resultOfCalculating;
+        else return this.getClientsMoneyInUSD();
+      }
+      getIncreasedCurrencyRate() {
+        let result1 = this.getActualMoney();
+        let result2 = ((result1 + 100) * this.CurrencyRate) / result1;
+        return result2;
+      }
+      toString() {
+        return `Actual currency rate - ${this.CurrencyRate
+          },<br/> Actual amount in UAH - ${this.getActualMoney()} <br/> Actual amount in USD - ${this.getTheResultOfAmount()}$ <br/> Currency rate needed to increase actual amount in UAH - ${this.getIncreasedCurrencyRate()}`;
+      }
+    }
+    let moneyAmountOfFirstClient = new TMoney(3000, 30);
+    document.write(`<p>${moneyAmountOfFirstClient}</p>`);
+  </script>
+
+</body>
+
+</html>
