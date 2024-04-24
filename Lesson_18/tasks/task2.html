@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>task2</title>
+</head>
+
+<body>
+  <p>
+    Задача 2. Зробити конвертер валют (курси валют – константи у скрипті)
+
+  </p>
+  <script>
+    function converter() {
+      const amountInUAH = parseFloat(document.getElementById("uah").value)
+      const dollarExchangeRate = 38
+      const euroExchangeRate = 41
+      let resultInDollars = amountInUAH / dollarExchangeRate
+      let resultInEuros = amountInUAH / euroExchangeRate
+      document.getElementById("dollar").value = resultInDollars.toFixed(2)
+      document.getElementById("euro").value = resultInEuros.toFixed(2)
+    }
+    window.onload = function () {
+      document.querySelector('button').onclick = converter
+
+    }
+  </script>
+  <label>
+    Amount in UAH
+    <input value="0" id="uah" type="number">
+  </label>
+  <br>
+  <br>
+  <button type="button">Convert</button>
+  <hr>
+  <label>
+    Amount in Dollars
+    <input value="0" id="dollar" type="number">
+  </label>
+  <br>
+  <br>
+  <label>
+    Amount in Euros
+    <input value="0" id="euro" type="number">
+  </label>
+  <!-- <script src="js/DOM.js"></script> -->
+</body>
+
+</html>

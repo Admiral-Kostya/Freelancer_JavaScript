@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>task1</title>
+</head>
+
+<body>
+  <p>
+    Задача 1. Розробити калькулятор
+
+  </p>
+  <script>
+    function addNumbers() {
+      const firstNumber = parseFloat(document.getElementById('first').value)
+      const secondNumber = parseFloat(document.getElementById('second').value)
+      let summOfTwoNumbers = firstNumber + secondNumber
+      document.getElementById("result").value = summOfTwoNumbers
+    }
+    function substractNumbers() {
+      const firstNumber = parseFloat(document.getElementById('first').value)
+      const secondNumber = parseFloat(document.getElementById('second').value)
+      let summOfTwoNumbers = firstNumber - secondNumber
+      document.getElementById("result").value = summOfTwoNumbers
+    }
+    function multiplyNumbers() {
+      const firstNumber = parseFloat(document.getElementById('first').value)
+      const secondNumber = parseFloat(document.getElementById('second').value)
+      let summOfTwoNumbers = firstNumber * secondNumber
+      document.getElementById("result").value = summOfTwoNumbers
+    }
+    function divideNumbers() {
+      const firstNumber = parseFloat(document.getElementById('first').value)
+      const secondNumber = parseFloat(document.getElementById('second').value)
+      let summOfTwoNumbers = firstNumber / secondNumber
+      document.getElementById("result").value = summOfTwoNumbers
+    }
+    window.onload = function () {
+      document.getElementById('add').onclick = addNumbers
+      document.getElementById('substract').onclick = substractNumbers
+      document.getElementById('multiplay').onclick = multiplyNumbers
+      document.getElementById('divide').onclick = divideNumbers
+    }
+  </script>
+  <label>
+    First Number
+    <input value="0" id="first" type="number">
+  </label>
+  <br>
+  <br>
+  <label>
+    Second Number
+    <input value="0" id="second" type="number">
+  </label>
+  <br>
+  <br>
+  <button id="add" type="button">
+    add
+  </button>
+  <button id="substract" type="button">
+    substract
+  </button>
+  <button id="multiplay" type="button">
+    multiplay
+  </button>
+  <button id="divide" type="button">
+    divide
+  </button>
+  <hr>
+  <label>
+    Result
+    <input id="result" type="number">
+  </label>
+  <!-- <script src="js/DOM.js"></script> -->
+</body>
+
+</html>

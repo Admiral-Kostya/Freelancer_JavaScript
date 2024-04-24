@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/style.css">
+  <title>task6</title>
+</head>
+
+<body>
+  <p>
+    Задача 6. Користувач задає кількість оцінок і натискає на кнопку «get table». В результаті формується таблиця з
+    input, куди користувач вводить оцінки. Після цього натискає на кнопку “get sum” і знаходить середнє значення.
+  </p>
+  <script>
+    function getATable() {
+      const parent = document.querySelector(".parent-block")
+      const value = parseInt(document.getElementById('qty').value)
+      const tableEl = document.createElement("table");
+      tableEl.classList.add("table");
+      for (let r = 0; r < 1; r++) {
+        const rowEl = document.createElement("tr");
+        tableEl.append(rowEl);
+        for (let c = 0; c < value; c++) {
+          const colEl = document.createElement("td");
+          colEl.classList.add("td");
+          colEl.innerHTML = `<input  type ="number">`;
+          rowEl.append(colEl);
+        }
+      }
+      parent.append(tableEl);
+    }
+    function getAverageScore() {
+      const parent = document.querySelector(".parent-block")
+      const marks = document.querySelectorAll("table input[type='number']")
+      let sum = 0
+      marks.forEach(mark => {
+        sum += parseInt(mark.value)
+      })
+      const averageScore = sum / marks.length
+      const resultMark = document.createElement("span")
+      resultMark.innerText = averageScore
+      parent.append(resultMark)
+    }
+    window.onload = function () {
+      document.getElementById("get-table").onclick = getATable;
+      document.getElementById("get-average").onclick = getAverageScore;
+    };
+  </script>
+  <div class="parent-block">
+    <label>
+      Quantity of marks
+      <input type="number" id="qty">
+    </label>
+    <br>
+    <button id="get-table" type="button">get table</button>
+    <br>
+    <br>
+    <button id="get-average" type="button">get sum</button>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,17 @@
+.flex {
+  font-size: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.td {
+  border: 1px solid #dddddd;
+  padding: 8px;
+  text-align: center;
+}

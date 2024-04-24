@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+  <title>task7</title>
+</head>
+
+<body>
+  <p>
+    Задача 7. Подорож складається з 3 етапів. На кожному етапі користувач може вибрати один з видів транспорту (авто,
+    автобус, літак - випадаючий список), харчування (сніданок, обід, вечеря – checkbоx) та одного з 3-х
+    гідів(використати - radio buttons). Ціни визначте самі. Підрахувати загальну вартість.
+  </p>
+  <h2>
+    Coordination of travel details
+  </h2>
+  <h3>
+    Choose your transport!
+  </h3>
+  <select id="transport">
+    <option value="1000">By Bus</option>
+    <option value="3000">By Plane</option>
+    <option value="1800">By Auto</option>
+  </select>
+  <h3>
+    Choose, what do you prefer to eat!
+  </h3>
+  <input type="checkbox" id="breakfast" name="myCheckbox" value="150">
+  <label for="breakfast">Breakfast</label>
+  <input type="checkbox" id="dinner" name="myCheckbox" value="200">
+  <label for="dinner">Dinner</label>
+  <input type="checkbox" id="supper" name="myCheckbox" value="240">
+  <label for="supper">Supper</label>
+  <h3>
+    Choose your guide!
+  </h3>
+  <input value="500" type="radio" id="option1" name="guides">
+  <label for="option1">Havi Alonso</label><br>
+
+  <input value="350" type="radio" id="option2" name="guides">
+  <label for="option2">Alfredo Gusto</label><br>
+
+  <input value="600" type="radio" id="option3" name="guides">
+  <label for="option3">Sergio Ramos</label><br>
+  <br>
+  <button type="button">Calculate The Price</button>
+  <script>
+    function getTheTotalPrice() {
+      const transport = parseFloat(document.querySelector("select").value)
+
+      let mealSum = 0
+      let guidePrice = 0
+      const meal = document.querySelectorAll("input[type=checkbox]")
+      for (const el of meal) {
+        if (el.checked) {
+          mealSum += parseInt(el.value)
+        }
+      }
+      const guide = document.querySelector('input[name="guides"]:checked');
+      if (guide) {
+        guidePrice = parseInt(guide.value)
+      }
+      let totalPrice = transport + mealSum + guidePrice
+      const showTotalPrice = document.createElement("div")
+      showTotalPrice.innerText = totalPrice
+      document.body.append(showTotalPrice)
+    }
+    window.onload = function () {
+      document.querySelector("button").onclick = getTheTotalPrice
+    }
+
+  </script>
+
+
+  <!--   <script src="js/DOM.js"></script> -->
+</body>
+
+</html>

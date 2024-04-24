@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/style.css">
+  <title>task3</title>
+</head>
+
+<body>
+  <p>
+    Задача 3. Користувач задає рік народження. Визначити кількість років користувача.
+  </p>
+  <script>
+    const userName = prompt("Write your name")
+    const userYearOfBirth = parseInt(prompt("Write your year of birth"))
+    const currentYear = 2024
+    if (userName.trim().length !== 0 && userYearOfBirth >= 1924) {
+      let yearsOld = currentYear - userYearOfBirth
+      const parentEl = document.querySelector('p')
+      const divEl = document.createElement("div")
+      divEl.classList.add("flex")
+      divEl.innerText = ` Hello ${userName}. You are ${yearsOld} years old.`
+      parentEl.after(divEl)
+    }
+    else {
+      alert(`Something got wrong!`)
+    }
+  </script>
+  <!-- <script src="js/DOM.js"></script> -->
+</body>
+
+</html>
