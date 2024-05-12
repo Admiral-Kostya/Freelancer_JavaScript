@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>task2</title>
+</head>
+
+<body>
+  <p>
+    2. Створити службове авто (водій, марка, номер). Створити клас таким чином, щоб можна було створити тільки один
+    екземпляр цього класу.
+  </p>
+  <script>
+    class CarBrand {
+      #car;
+      #carModel;
+      constructor({ car, carModel }) {
+        this.Car = car;
+        this.CarModel = carModel;
+      }
+      get Car() {
+        return this.#car;
+      }
+      set Car(newCar) {
+        if (newCar.trim().length === 0) throw new Error(`Car name is not correct`);
+        this.#car = newCar;
+      }
+      get CarModel() {
+        return this.#carModel;
+      }
+      set CarModel(newCarModel) {
+        if (newCarModel.trim().length === 0)
+          throw new Error(`Car model is not correct`);
+        this.#carModel = newCarModel;
+      }
+      toString() {
+        return ` ${this.Car} ${this.CarModel} `;
+      }
+    }
+    class CompanyCar {
+      #driverName;
+      #carNumber;
+      static companyDriverRef;
+      constructor(initData) {
+        if (CompanyCar.companyDriverRef) return CompanyCar.companyDriverRef;
+        this.DriverName = initData.carDriver;
+        this.carBrand = new CarBrand(initData.carBrand);
+        this.CarNumber = initData.carNumber;
+        CompanyCar.companyDriverRef = this;
+      }
+      get DriverName() {
+        return this.#driverName;
+      }
+      set DriverName(newName) {
+        if (newName.trim().length === 0 || !isNaN(parseFloat(newName)))
+          throw new Error(`The name is not correct`);
+        this.#driverName = newName;
+      }
+      get CarNumber() {
+        return this.#carNumber;
+      }
+      set CarNumber(newNumber) {
+        if (newNumber <= 0) throw new Error(`The number is not correct`);
+        this.#carNumber = newNumber;
+      }
+      toString() {
+        return `<p>Personal information of a company driver:</p>
+    <p>Driver's name - ${this.DriverName}</p>
+    <p>Driver's car - ${this.carBrand}</p>
+    <p>Car's number - ${this.CarNumber}</p>
+    `;
+      }
+    }
+    let companyCar = {
+      carDriver: "Kostya",
+      carBrand: {
+        car: "Toyota",
+        carModel: "Corolla",
+      },
+      carNumber: "CB233454AA",
+    };
+
+    let companyCar1 = new CompanyCar(companyCar);
+    let companyCar2 = new CompanyCar(companyCar);
+    document.write(`<p>${companyCar1}</p>`);
+    document.write(`<p>${companyCar2}</p>`);
+    console.log(companyCar1 === companyCar2);
+
+    class Director {
+      // поле для сохранения первого созданного объекта
+      static directorRef; // изначально undefined
+      constructor(name, department) {
+        // если 1 директор уже существует Director.directorRef мы его и возвращаем
+        if (Director.directorRef) return Director.directorRef;
+        this.name = name;
+        this.department = department;
+        Director.directorRef = this;
+      }
+      toString() {
+        return ` ${this.name} - ${this.department} `;
+      }
+    }
+    const d1 = new Director("Ivan", "deparment1");
+    console.log(d1.name); // Ivan
+    const d2 = new Director("Olga", "deparment1");
+    console.log(d2.name); // Ivan
+    console.log(d1 === d2); // true
+  </script>
+
+  <!-- <script src="js/DOM.js"></script> -->
+</body>
+
+</html>

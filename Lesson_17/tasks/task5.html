@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/style.css">
+  <title>task5</title>
+</head>
+
+<body>
+  <div class="parent-block">
+    <p>
+      5. Особиста бібліотека. Картотека домашньої бібліотеки: дані книги (автори (піб, рік народження, короткий опис),
+      назва книги, жанр, видавництво (назва, реєстраційний номер, рік засування)). Реалізувати розділи бібліотеки
+      (спеціальна література, хобі, домашнє господарство і т.д.), походження книги і наявність на даний час.
+      Організувати додавання/вилучення книг та вибір книг за назвою, за ПІБ автора, за видавництвом.
+    </p>
+  </div>
+  <script>
+    class Book {
+      #name;
+      #surname;
+      #dateOfABirth;
+      #descrOfABook;
+      #bookTitle;
+      #genre;
+      #publishingTitle;
+      #registerNumber;
+      #yearOfEstablishing;
+      constructor(incomeBook) {
+        this.AuthorName = incomeBook.author.name;
+        this.AuthorSurname = incomeBook.author.surname;
+        this.DateOfABirth = incomeBook.author.dateOfABirth;
+        this.DescrOfABook = incomeBook.author.descrOfABook;
+        this.BookTitle = incomeBook.bookTitle;
+        this.Genre = incomeBook.genre;
+        this.PublishingTitle = incomeBook.publishing.publishingTitle;
+        this.RegisterNumber = incomeBook.publishing.registerNumber;
+        this.YearOfEstablishing = incomeBook.publishing.yearOfEstablishing;
+        this.inStock = incomeBook.inStock;
+        this.qty = incomeBook.qty;
+      }
+      get AuthorName() {
+        return this.#name;
+      }
+      set AuthorName(newName) {
+        if (newName.trim().length === 0 || !isNaN(parseFloat(newName)))
+          throw new Error("Author's name is not correct");
+        this.#name = newName;
+      }
+      get AuthorSurname() {
+        return this.#surname;
+      }
+      set AuthorSurname(newSurname) {
+        if (newSurname.trim().length === 0 || !isNaN(parseFloat(newSurname)))
+          throw new Error("Author's  surname is not correct");
+        this.#surname = newSurname;
+      }
+      get DateOfABirth() {
+        return this.#dateOfABirth;
+      }
+      set DateOfABirth(dateOfABirth) {
+        if (!isFinite(dateOfABirth) || dateOfABirth < 0)
+          throw new Error("Author's date of a birth is not correct");
+        this.#dateOfABirth = dateOfABirth;
+      }
+      get DescrOfABook() {
+        return this.#descrOfABook;
+      }
+      set DescrOfABook(descrOfABook) {
+        if (descrOfABook.trim().length === 0 || !isNaN(parseFloat(descrOfABook)))
+          throw new Error("Description of a book is not correct");
+        this.#descrOfABook = descrOfABook;
+      }
+      get BookTitle() {
+        return this.#bookTitle;
+      }
+      set BookTitle(bookTitle) {
+        if (bookTitle.trim().length === 0 || !isNaN(parseFloat(bookTitle)))
+          throw new Error("Book title is not correct");
+        this.#bookTitle = bookTitle;
+      }
+      get Genre() {
+        return this.#genre;
+      }
+      set Genre(genre) {
+        if (genre.trim().length === 0 || !isNaN(parseFloat(genre)))
+          throw new Error("Genre is not correct");
+        this.#genre = genre;
+      }
+      get PublishingTitle() {
+        return this.#publishingTitle;
+      }
+      set PublishingTitle(publishingTitle) {
+        if (
+          publishingTitle.trim().length === 0 ||
+          !isNaN(parseFloat(publishingTitle))
+        )
+          throw new Error("Publishing title is not correct");
+        this.#publishingTitle = publishingTitle;
+      }
+      get RegisterNumber() {
+        return this.#registerNumber;
+      }
+      set RegisterNumber(newRegisterNumber) {
+        let numAsString = newRegisterNumber.toString();
+        let lengthOfNum = numAsString.length;
+        if (lengthOfNum < 6 || newRegisterNumber < 0)
+          throw new Error(" Register number is not correct");
+        this.#registerNumber = newRegisterNumber;
+      }
+      get YearOfEstablishing() {
+        return this.#yearOfEstablishing;
+      }
+      set YearOfEstablishing(yearOfEstablishing) {
+        if (!isFinite(yearOfEstablishing) || yearOfEstablishing < 0)
+          throw new Error("Author's date of a birth is not correct");
+        this.#yearOfEstablishing = yearOfEstablishing;
+      }
+      toString() {
+        return `
+    <p>Full Name of an author - ${this.AuthorName} ${this.AuthorSurname}.</p>
+    <p>Author's date of a birth - ${this.DateOfABirth} year.</p>
+    <p>Information about an author - ${this.DescrOfABook}
+    </p>
+    <p>The book's title -${this.BookTitle}.</p>
+    <p>The book's genre - ${this.Genre}.</p>
+    <p></p>
+    `;
+      }
+    }
+    let booksList = [
+      new Book({
+        author: {
+          name: "Alexander",
+          surname: "Duma",
+          dateOfABirth: 1802,
+          descrOfABook:
+            "French writer, playwright and journalist. One of the most widely read French authors, a master of the adventure novel. His two most famous books are The Count of Monte Cristo and The Three Musketeers.",
+        },
+        bookTitle: "The Three Musketeers",
+        genre: "novel",
+        publishing: {
+          publishingTitle: "French novels",
+          registerNumber: 234512,
+          yearOfEstablishing: 2005,
+        },
+        inStock: true,
+        qty: 10,
+      }),
+      new Book({
+        author: {
+          name: "Alexander",
+          surname: "Duma",
+          dateOfABirth: 1802,
+          descrOfABook:
+            "French writer, playwright and journalist. One of the most widely read French authors, a master of the adventure novel. His two most famous books are The Count of Monte Cristo and The Three Musketeers.",
+        },
+        bookTitle: "The Count of Monte Cristo",
+        genre: "novel",
+        publishing: {
+          publishingTitle: "French novels",
+          registerNumber: 214566,
+          yearOfEstablishing: 2002,
+        },
+        inStock: true,
+        qty: 9,
+      }),
+      new Book({
+        author: {
+          name: "Jim ",
+          surname: "Collins",
+          dateOfABirth: 1965,
+          descrOfABook:
+            "This book will help every leader to seriously and deeply analyze the state of affairs and prospects in their company",
+        },
+        bookTitle: "Drucker's Five Key Questions",
+        genre: "special literature",
+        publishing: {
+          publishingTitle: "Mann",
+          registerNumber: 345612,
+          yearOfEstablishing: 1997,
+        },
+        inStock: false,
+        qty: 10,
+      }),
+      new Book({
+        author: {
+          name: "Emily  ",
+          surname: "Bronte",
+          dateOfABirth: 1818,
+          descrOfABook:
+            "The novel by the English writer Emily Bronte, amazing in its power and passion, is one of the most mysterious works of world literature.",
+        },
+        bookTitle: "Wuthering Heights",
+        genre: "drama",
+        publishing: {
+          publishingTitle: "Mann",
+          registerNumber: 128765,
+          yearOfEstablishing: 2008,
+        },
+        inStock: false,
+        qty: 10,
+      }),
+      new Book({
+        author: {
+          name: "Joanne   ",
+          surname: "Rowling",
+          dateOfABirth: 1965,
+          descrOfABook:
+            "'Harry Potter and the Philosopher's Stone' is the first volume in a series of books about the young wizard Harry Potter.",
+        },
+        bookTitle: "Harry Potter and the Philosopher's Stone",
+        genre: "fantasy",
+        publishing: {
+          publishingTitle: "Mann",
+          registerNumber: 128456,
+          yearOfEstablishing: 2001,
+        },
+        inStock: true,
+        qty: 10,
+      }),
+      new Book({
+        author: {
+          name: "John",
+          surname: "Smith",
+          dateOfABirth: 1978,
+          descrOfABook:
+            "An intriguing mystery novel set in a small English village.",
+        },
+        bookTitle: "The Secret of Willow Creek",
+        genre: "Mystery",
+        publishing: {
+          publishingTitle: "English Press",
+          registerNumber: 123456,
+          yearOfEstablishing: 2015,
+        },
+        inStock: true,
+        qty: 10,
+      }),
+      new Book({
+        author: {
+          name: "Anna",
+          surname: "Johnson",
+          dateOfABirth: 1985,
+          descrOfABook:
+            "A heartwarming tale of friendship and adventure on the high seas.",
+        },
+        bookTitle: "The Lost Treasure of Captain Blackbeard",
+        genre: "Adventure",
+        publishing: {
+          publishingTitle: "Maritime Books",
+          registerNumber: 654321,
+          yearOfEstablishing: 2018,
+        },
+        inStock: true,
+        qty: 10,
+      }),
+      new Book({
+        author: {
+          name: "Michael",
+          surname: "Brown",
+          dateOfABirth: 1960,
+          descrOfABook:
+            "A gripping science fiction novel exploring the boundaries of human consciousness.",
+        },
+        bookTitle: "Mind's Edge",
+        genre: "Science Fiction",
+        publishing: {
+          publishingTitle: "Futuristic Publications",
+          registerNumber: 987654,
+          yearOfEstablishing: 2020,
+        },
+        inStock: false,
+        qty: 10,
+      }),
+    ];
+    class Library {
+      constructor(booksList) {
+        this.bookList = booksList;
+        this.library = [];
+      }
+      addBooksToTheLibrary() {
+        for (let i = 0; i < this.bookList.length; i++) {
+          this.library.push(this.bookList[i]);
+        }
+      }
+      isAvailable() {
+        const blockOfBooksInStock = document.createElement("div");
+        blockOfBooksInStock.className = "books-in-stock-body";
+
+        const booksInStockTitle = document.createElement("h2");
+        booksInStockTitle.className = "books-in-stock-body__title";
+        booksInStockTitle.innerText = "Books that are available";
+        blockOfBooksInStock.append(booksInStockTitle);
+
+        let availableBooks = this.library.filter((book) => book.inStock);
+        const listOfAvailableBooks = document.createElement("ul");
+        blockOfBooksInStock.append(listOfAvailableBooks);
+        availableBooks.forEach((book) => {
+          const availableBook = document.createElement("li");
+          availableBook.style.marginBottom = "20px";
+          availableBook.innerHTML = `
+        <p class = "container-item-paragraph"  >Authors's name - ${book.AuthorName} ${book.AuthorSurname}</p>
+         <p class = "container-item-paragraph">Authors's book - ${book.BookTitle}</p>
+        `;
+          listOfAvailableBooks.append(availableBook);
+        });
+
+        return blockOfBooksInStock;
+      }
+      showSectionsOfLibrary(arrayOfGenres) {
+        const librarySections = document.createElement("div");
+        librarySections.className = "library-sections";
+        for (let genre = 0; genre < arrayOfGenres.length; genre++) {
+          for (let bookInfo = 0; bookInfo < this.library.length; bookInfo++) {
+            if (
+              this.library[bookInfo].Genre.toLowerCase() ===
+              arrayOfGenres[genre].toLowerCase() &&
+              this.library[bookInfo].inStock
+            ) {
+              const title = document.createElement("h2");
+              title.className = "novel-title";
+              title.innerText = arrayOfGenres[genre];
+              const bookInfoDiv = document.createElement("div");
+              bookInfoDiv.className = "book-info-block";
+              bookInfoDiv.innerHTML = `
+           <p class = "container-item-paragraph"  >Authors's name - ${this.library[bookInfo].AuthorName} ${this.library[bookInfo].AuthorSurname}</p>
+           <p class = "container-item-paragraph">Authors's date of a birth - ${this.library[bookInfo].DateOfABirth}</p>
+         <p class = "container-item-paragraph">Authors's book - ${this.library[bookInfo].BookTitle}</p>
+           <p class = "container-item-paragraph">Small desxription of a book - ${this.library[bookInfo].DescrOfABook}</p>
+            `;
+              librarySections.append(title);
+              librarySections.append(bookInfoDiv);
+            }
+          }
+        }
+        return librarySections;
+      }
+      giveABook(bookTitle, registerNumber, qtyOfBooks) {
+        for (let i = 0; i < this.library.length; i++) {
+          if (
+            this.library[i].BookTitle === bookTitle &&
+            this.library[i].RegisterNumber === registerNumber
+          ) {
+            this.library[i].qty -= qtyOfBooks;
+            if (this.library[i].qty === 0) this.library[i].inStock = false;
+            break;
+          }
+        }
+        const libraryContainer = document.querySelector(".library-container");
+        libraryContainer.innerHTML = "";
+        libraryContainer.append(
+          this.showSectionsOfLibrary([
+            "Novel",
+            "Special literature",
+            "Drama",
+            "Science fiction",
+            "Adventure",
+            "Mystery",
+            "Fantasy",
+          ])
+        );
+        libraryContainer.append(this.isAvailable());
+      }
+      chooseBookByTitle(bookTitle) {
+        let choosedBookByTitle = this.library.filter(
+          (book) => book.BookTitle.toLowerCase() === bookTitle.toLowerCase()
+        );
+        if (choosedBookByTitle.length > 0 && choosedBookByTitle[0].qty > 0)
+          console.log("available");
+        else console.log("not available");
+      }
+      chooseBookByAuthor(authorSurname) {
+        let choosedBookByAuthorSurname = this.library.filter(
+          (book) => book.AuthorSurname.toLowerCase() === authorSurname.toLowerCase()
+        );
+        for (let i = 0; i < choosedBookByAuthorSurname.length; i++) {
+          if (
+            choosedBookByAuthorSurname.length > 0 &&
+            choosedBookByAuthorSurname[i].qty > 0
+          )
+            console.log(
+              `Книга автора ${choosedBookByAuthorSurname[i].AuthorName} ${choosedBookByAuthorSurname[i].AuthorSurname} (${choosedBookByAuthorSurname[i].BookTitle}) - is available`
+            );
+          else
+            console.log(
+              `Книга автора ${choosedBookByAuthorSurname[i].AuthorName} ${choosedBookByAuthorSurname[i].AuthorSurname} (${choosedBookByAuthorSurname[i].BookTitle})  - is not available`
+            );
+        }
+      }
+      chooseBookByPublishing(publishingTitle) {
+        let choosedBookByPublishing = this.library.filter(
+          (book) =>
+            book.PublishingTitle.toLowerCase() === publishingTitle.toLowerCase()
+        );
+        for (let i = 0; i < choosedBookByPublishing.length; i++) {
+          if (
+            choosedBookByPublishing.length > 0 &&
+            choosedBookByPublishing[i].qty > 0
+          )
+            console.log(
+              `Книга автора ${choosedBookByPublishing[i].AuthorName} ${choosedBookByPublishing[i].AuthorSurname} (${choosedBookByPublishing[i].BookTitle}) - is available`
+            );
+          else
+            console.log(
+              `Книга автора ${choosedBookByPublishing[i].AuthorName} ${choosedBookByPublishing[i].AuthorSurname} (${choosedBookByPublishing[i].BookTitle})  - is not available`
+            );
+        }
+      }
+      render() {
+        const libraryContainer = document.createElement("div");
+        libraryContainer.className = "library-container";
+        libraryContainer.append(
+          this.showSectionsOfLibrary([
+            "Novel",
+            "Special literature",
+            "Drama",
+            "Science fiction",
+            "Adventure",
+            "Mystery",
+            "Fantasy",
+          ])
+        );
+        libraryContainer.append(this.isAvailable());
+        return libraryContainer;
+      }
+    }
+
+    let library1 = new Library(booksList);
+    library1.addBooksToTheLibrary();
+    document.body.append(library1.render());
+    library1.giveABook("The Three Musketeers", 234512, 10);
+    library1.chooseBookByTitle("The Three Musketeers");
+    library1.chooseBookByAuthor("Duma");
+    library1.chooseBookByPublishing("Futuristic Publications");
+  </script>
+</body>
+
+
+</html>

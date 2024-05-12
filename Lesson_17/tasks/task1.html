@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>task1</title>
+</head>
+
+<body>
+  <p>
+    1. Створити клас, що дозволяє виконувати такі операції над масивами: знаходження кількості додатних, кількості
+    від’ємних, кількість входжень деякого числа (статичні методи)
+  </p>
+  <script>
+    class OperationsWithArrays {
+      static #number = 5;
+      static getQtyOfPositive(incomeArray) {
+        let qtyOfPositive = incomeArray.reduce(
+          (prevSum, value) => (value > 0 ? (prevSum += 1) : prevSum),
+          0
+        );
+        return qtyOfPositive;
+      }
+      static getQtyOfNegative(incomeArray) {
+        let qtyOfNegative = incomeArray.reduce(
+          (prevSum, value) => (value < 0 ? (prevSum += 1) : prevSum),
+          0
+        );
+        return qtyOfNegative;
+      }
+      static getQtyOfSame(incomeArray) {
+        let qtyOfSameNumbers = incomeArray.reduce(
+          (prevSum, value) => (value === this.#number ? (prevSum += 1) : prevSum),
+          0
+        );
+        return qtyOfSameNumbers;
+      }
+      static get Number() {
+        return this.#number;
+      }
+      static set Number(newValue) {
+        if (!isFinite(newValue)) throw new Error(`The value isn't valid`);
+        this.#number = newValue;
+      }
+    }
+    let arr = [5, 12, 3, 23, -23, 5, 3, 24, 5, -5, 85, -3, 100, 3, 5, -9];
+    // OperationsWithArrays.Number = "fsdfds";
+    // OperationsWithArrays.Number = Infinity;
+    // OperationsWithArrays.Number = -Infinity;
+    document.write(
+      `<p> Quantity of positive numbers -  ${OperationsWithArrays.getQtyOfPositive(
+        arr
+      )}</p>`
+    );
+    document.write(
+      `<p> Quantity of negative numbers -  ${OperationsWithArrays.getQtyOfNegative(
+        arr
+      )}</p>`
+    );
+    document.write(
+      `<p> Quantity of the same numbers -  ${OperationsWithArrays.getQtyOfSame(
+        arr
+      )}</p>`
+    );
+  </script>
+
+  <!-- <script src="js/DOM.js"></script> -->
+</body>
+
+</html>

@@ -1,0 +1,247 @@
+.wrapper {
+  overflow: clip; /* //позволяет работать с position: sticky; */
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.wrapper > main {
+  flex-grow: 1;
+}
+/* .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+  box-sizing: content-box;
+} */
+
+/* .productContainer {
+  margin: 20px;
+  padding: 10px;
+  border: 1px solid lightblue;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.imageBlock {
+  flex-shrink: 1;
+  width: 100px;
+  height: 100px;
+}
+.content-image {
+  max-width: 100%;
+  max-height: 100%;
+}
+.titleElement {
+  font-weight: 500;
+  font-size: 22px;
+  color: black;
+}
+.subtract-button {
+  font-size: 50px;
+  margin-right: 20px;
+}
+.add-button {
+  font-size: 30px;
+}
+.count-span {
+  font-size: 30px;
+  margin-right: 20px;
+} */
+.wishlist__container {
+  max-width: 925px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+.wishlist__title-block {
+  margin-bottom: 50px;
+  font-size: 45px;
+}
+.wishlist__items {
+  display: flex;
+  flex-direction: column;
+  row-gap: 30px;
+  margin-bottom: 30px;
+}
+
+.item-wishlist {
+  display: flex;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #edeef2;
+  column-gap: 36px;
+}
+.item-wishlist__close {
+  /*  margin-right: 36px; */
+  cursor: pointer;
+  align-self: center;
+  flex-grow: 0;
+  flex-shrink: 0;
+  min-height: 14px;
+  min-width: 14px;
+  flex-basis: 14px;
+  background: url("../img/Wishlist/close-cross.svg") center no-repeat;
+  transition: transform 0.3s ease;
+}
+.item-wishlist__close:hover {
+  transform: scale(1.05);
+}
+.item-wishlist__content {
+  flex-grow: 1;
+}
+.content-wishlist {
+  display: flex;
+  align-items: center;
+  column-gap: 36px;
+}
+.content-wishlist__image {
+  flex-basis: 110px;
+  flex-shrink: 0;
+}
+.content-wishlist__image img {
+  transition: transform 0.3s ease;
+  max-width: 100%;
+  height: 100%;
+}
+.content-wishlist__image:hover img {
+  transform: scale(1.05);
+}
+.content-wishlist__info {
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+  flex-grow: 1;
+}
+.content-wishlist__title {
+  color: #3c4242;
+  font-size: 22px;
+  font-family: "Causten";
+  font-weight: 700;
+  letter-spacing: 0.44px;
+}
+.content-wishlist__qty {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.content-wishlist__count {
+  margin-right: 30px;
+}
+.content-wishlist__color,
+.content-wishlist__color span,
+.content-wishlist__qty,
+.content-wishlist__qty span {
+  font-size: 22px;
+  font-family: "Causten";
+  font-weight: 500;
+  letter-spacing: 0.44px;
+}
+.content-wishlist__color span,
+.content-wishlist__qty span {
+  color: #3c4242;
+}
+.content-wishlist__color,
+.content-wishlist__qty {
+  color: #807d7e;
+}
+.content-wishlist__add-button,
+.content-wishlist__subtract-button {
+  width: 30px;
+  height: 30px;
+}
+.content-wishlist__add-button img,
+.content-wishlist__subtract-button img {
+  transition: transform 0.3s ease;
+  max-width: 100%;
+  max-height: 100%;
+}
+.content-wishlist__add-button img:hover,
+.content-wishlist__subtract-button img:hover {
+  transform: scale(1.1);
+}
+.add-wishlist {
+  display: flex;
+  column-gap: 50px;
+  align-items: center;
+}
+.add-wishlist__price {
+  color: #807d7e;
+  font-size: 22px;
+  font-family: "Causten";
+  font-weight: 700;
+  letter-spacing: 0.44px;
+}
+.button {
+  white-space: nowrap;
+  display: inline-flex;
+  color: #8a33fd;
+  font-size: 18px;
+  font-family: "Causten";
+  font-weight: 500;
+  min-height: 46px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 46px;
+  border-radius: 8px;
+  border: 1px solid #3c4242;
+  transition: 0.3s all;
+}
+.button:hover {
+  border: 1px solid #8a33fd;
+  background-color: #8a33fd;
+  color: #fff;
+}
+
+.wishlist__total-price {
+  color: #3c4242;
+  font-size: 35px;
+  font-family: "Causten";
+  font-weight: 500;
+  letter-spacing: 0.44px;
+}
+
+.block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 500px;
+  height: 500px;
+  background-color: skyblue;
+  border: 3px solid brown;
+  color: #8a33fd;
+  font-weight: 500;
+  font-size: 40px;
+  text-transform: capitalize;
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  gap: 30px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.remindCounter {
+  font-size: 40px;
+  font-weight: 500;
+}
+
+.container-item-paragraph:not(:last-child) {
+  margin-bottom: 8px;
+}
+
+.novel-title,
+.books-in-stock-body__title {
+  margin-bottom: 15px;
+  font-size: 32px;
+  font-weight: 600;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+}
+.book-info-block {
+  margin-bottom: 40px;
+}
+.library-sections {
+  margin-bottom: 50px;
+}

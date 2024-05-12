@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/style.css">
+  <title>task3</title>
+</head>
+
+<body>
+  <p>
+    3. Створити клас Нагадувач. Кожні вказані кількості секунд (використати setInterval) програма нагадує про якусь
+    подію (це просто текст) і також виводиться порядковий номер скільки раз вже нагадування було. Зробити так, щоб
+    неможна було зробити одночасно декілька об’єктів-нагадувачів
+  </p>
+  <script>
+    class Reminder {
+      static reminderRef;
+      constructor(listOfReminds, parentSelector, qtyOfReminds, interval) {
+        if (Reminder.reminderRef) return Reminder.reminderRef;
+        this.listOfReminds = listOfReminds;
+        this.parentSelector = parentSelector;
+        this.qtyOfReminds = qtyOfReminds;
+        this.interval = interval;
+        Reminder.reminderRef = this;
+      }
+      remindRandomly() {
+        const randomIndex = Math.floor(Math.random() * this.listOfReminds.length);
+        return this.listOfReminds[randomIndex];
+      }
+      updateRemind() {
+        this.block.innerText = this.remindRandomly();
+      }
+      createBlockWithReminds() {
+        let counter = 0;
+        let parentElement = document.querySelector(this.parentSelector);
+        if (!parentElement) {
+          parentElement = document.createElement("div");
+          parentElement.className = "container";
+          document.body.appendChild(parentElement);
+        }
+        this.block = document.createElement("div");
+        this.block.className = "block";
+        const remindCounter = document.createElement("div");
+        remindCounter.className = "remindCounter";
+        parentElement.append(this.block);
+        parentElement.append(remindCounter);
+        const intervalId = setInterval(() => {
+          this.updateRemind();
+          counter++;
+          remindCounter.innerText = `Quantity of reminds - ${counter}`;
+          if (counter === this.qtyOfReminds) {
+            clearInterval(intervalId);
+          }
+        }, this.interval);
+        return parentElement;
+      }
+      render() {
+        return this.createBlockWithReminds();
+      }
+    }
+
+    const listOfReminds = [
+      "call mom",
+      "call dad",
+      "call uncle",
+      "buy water",
+      "buy tomatoes",
+      "send an email",
+      "write a message",
+    ];
+
+    let reminder1 = new Reminder(listOfReminds, ".container", 5, 1500);
+    reminder1.render();
+
+
+
+  </script>
+  <!-- <script src="js/DOM.js"></script> -->
+</body>
+
+</html>

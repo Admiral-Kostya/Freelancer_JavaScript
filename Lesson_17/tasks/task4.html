@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>task4</title>
+</head>
+
+<body>
+  <p>
+    4. Склад. База товарів, які зберігаються на складі: назва товару, одиниця виміру, кількість, фірма виробник (назва,
+    реєстраційний номер). Організувати реєстрацію/відвантаження товарів, фільтрація за назвою товару, фільтрація за
+    назвою фірми
+  </p>
+  <script>
+    class NewProduct {
+      #itemTitle;
+      #unit;
+      #qty;
+      #brandName;
+      #registerNumber;
+      constructor(incomeData) {
+        this.ItemTitle = incomeData.itemTitle;
+        this.Unit = incomeData.unit;
+        this.Qty = incomeData.qty;
+        this.BrandName = incomeData.manufacturer.brandName;
+        this.RegisterNumber = incomeData.manufacturer.registerNumber;
+      }
+      get ItemTitle() {
+        return this.#itemTitle;
+      }
+      set ItemTitle(newItemTitle) {
+        if (newItemTitle.trim().length === 0 || !isNaN(parseFloat(newItemTitle)))
+          throw new Error("Item title is not correct");
+        this.#itemTitle = newItemTitle;
+      }
+      get Unit() {
+        return this.#unit;
+      }
+      set Unit(newUnit) {
+        if (newUnit.trim().length === 0 || !isNaN(parseFloat(newUnit)))
+          throw new Error("Item unit is not correct");
+        this.#unit = newUnit;
+      }
+      get Qty() {
+        return this.#qty;
+      }
+      set Qty(newQty) {
+        if (!isFinite(newQty) || newQty < 0)
+          throw new Error("Item qty is not correct");
+        this.#qty = newQty;
+      }
+      get BrandName() {
+        return this.#brandName;
+      }
+      set BrandName(newBrandName) {
+        if (newBrandName.trim().length === 0 || !isNaN(parseFloat(newBrandName)))
+          throw new Error("Item brand is not correct");
+        this.#brandName = newBrandName;
+      }
+      get RegisterNumber() {
+        return this.#registerNumber;
+      }
+      set RegisterNumber(newRegisterNumber) {
+        let numAsString = newRegisterNumber.toString();
+        let lengthOfNum = numAsString.length;
+        if (lengthOfNum < 6 || newRegisterNumber < 0)
+          throw new Error("Item register number is not correct");
+        this.#registerNumber = newRegisterNumber;
+      }
+    }
+
+    class Warehouse {
+      constructor() {
+        this.storeOfProducts = [];
+      }
+      addProductsToTheStore(products) {
+        for (let i = 0; i < products.length; i++) {
+          this.storeOfProducts.push(products[i]);
+        }
+        console.log(this.storeOfProducts);
+      }
+      sendTheProducts(itemTitle, unit, qty) {
+        for (let i = 0; i < this.storeOfProducts.length; i++) {
+          if (
+            this.storeOfProducts[i].ItemTitle === itemTitle &&
+            this.storeOfProducts[i].Unit === unit
+          ) {
+            this.storeOfProducts[i].Qty -= qty;
+            if (this.storeOfProducts[i].Qty === 0)
+              this.storeOfProducts.splice(i, 1);
+            break;
+          }
+        }
+      }
+      filterByTheItemTitle(filteredItemTitle) {
+        let filteredListBytheItemTitle = this.storeOfProducts.filter(
+          (product) => product.ItemTitle === filteredItemTitle
+        );
+        console.log(filteredListBytheItemTitle);
+
+        return filteredListBytheItemTitle;
+      }
+      filterByTheItemBrand(filteredItemBrand) {
+        let filteredListBytheItemBrand = this.storeOfProducts.filter(
+          (product) => product.BrandName === filteredItemBrand
+        );
+        console.log(filteredListBytheItemBrand);
+
+        return filteredListBytheItemBrand;
+      }
+    }
+
+    let listOfProductsToBeAdded = [
+      new NewProduct({
+        itemTitle: "Tea",
+        unit: "kg",
+        qty: 50,
+        manufacturer: {
+          brandName: "GreenField",
+          registerNumber: 343222,
+        },
+      }),
+      new NewProduct({
+        itemTitle: "Tea",
+        unit: "kg",
+        qty: 120,
+        manufacturer: {
+          brandName: "Ahmad",
+          registerNumber: 987654,
+        },
+      }),
+      new NewProduct({
+        itemTitle: "Tea",
+        unit: "kg",
+        qty: 70,
+        manufacturer: {
+          brandName: "Lovare",
+          registerNumber: 231324,
+        },
+      }),
+      new NewProduct({
+        itemTitle: "Coffee",
+        unit: "kg",
+        qty: 600,
+        manufacturer: {
+          brandName: "Jacobs",
+          registerNumber: 234589,
+        },
+      }),
+      new NewProduct({
+        itemTitle: "Fusetea",
+        unit: "ltrs",
+        qty: 250,
+        manufacturer: {
+          brandName: "IceTea",
+          registerNumber: 432156,
+        },
+      }),
+      new NewProduct({
+        itemTitle: "Twix",
+        unit: "pcs",
+        qty: 300,
+        manufacturer: {
+          brandName: "Nestle",
+          registerNumber: 187345,
+        },
+      }),
+      new NewProduct({
+        itemTitle: "KitKat",
+        unit: "pcs",
+        qty: 150,
+        manufacturer: {
+          brandName: "Nestle",
+          registerNumber: 455435,
+        },
+      }),
+    ];
+
+    let baseOfProducts = new Warehouse();
+    baseOfProducts.addProductsToTheStore(listOfProductsToBeAdded);
+    baseOfProducts.sendTheProducts("Coffee", "kg", 599);
+    baseOfProducts.filterByTheItemTitle("Tea");
+    baseOfProducts.filterByTheItemBrand("Jacobs");
+  </script>
+</body>
+
+</html>
